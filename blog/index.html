@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing — Chad Wadden</title>
+  <meta name="description" content="Articles on AI in education, creative technology, coaching, and performance leadership.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { padding-top: 68px; background: var(--cream); }
+
+    .blog-hero {
+      background: var(--navy);
+      padding: 60px 0;
+      margin-top: 0;
+    }
+    .blog-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .blog-hero p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.05rem;
+    }
+
+    .blog-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 40px 0 32px;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 2px solid var(--gray-300);
+      background: var(--white);
+      color: var(--gray-500);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: rgba(30,77,140,0.06);
+    }
+
+    .blog-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .blog-list { grid-template-columns: 1fr; }
+    }
+
+    .post-card {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--gray-100);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+    .post-card-img {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .post-card-body {
+      padding: 24px 26px 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .post-card-body h2 {
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin: 8px 0 10px;
+      line-height: 1.35;
+    }
+
+    .post-card-body p {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+
+    .read-link {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+    .read-link:hover { gap: 10px; }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-mark">CW</div>
+        <div class="logo-text">
+          <span class="name">Chad Wadden</span>
+          <span class="tagline-sm">Educator · Coach · Writer</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#pillars">Work</a></li>
+        <li><a href="/blog/" class="active">Writing</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/coaching/">Coaching</a></li>
+        <li><a href="/#speaking">Speaking</a></li>
+        <li><a href="/#about-strip">About</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/#newsletter" class="btn btn-primary">Get the Newsletter →</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="blog-hero">
+    <div class="container">
+      <p class="section-label">Writing</p>
+      <h1>Ideas Worth Thinking About</h1>
+      <p>Published every two weeks. Topics: AI in education, creative technology, coaching, and performance.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="blog-filters">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">AI in Education</button>
+      <button class="filter-btn">Creative Technology</button>
+      <button class="filter-btn">Coaching &amp; Performance</button>
+      <button class="filter-btn">Leadership</button>
+    </div>
+
+    <div class="blog-list">
+
+      <article class="post-card">
+        <div class="post-card-img" style="background:linear-gradient(135deg,#0d1b2e,#1e4d8c)">🤖</div>
+        <div class="post-card-body">
+          <span class="blog-tag">AI in Education</span>
+          <h2>AI in Education: A Classroom Teacher's Honest Take</h2>
+          <p>What actually works, what doesn't, and why the real question isn't about the tools — it's about the learning design underneath them.</p>
+          <div class="blog-meta" style="margin-bottom:14px">
+            <span>June 8, 2026</span><span>·</span><span>6 min read</span>
+          </div>
+          <a href="ai-in-education-honest-take.html" class="read-link">Read Article →</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-card-img" style="background:linear-gradient(135deg,#1a2f4a,#0ea5a0)">🎬</div>
+        <div class="post-card-body">
+          <span class="blog-tag">Creative Technology</span>
+          <h2>Why I Still Teach Film in a World of TikTok</h2>
+          <p>Broadcast production teaches something algorithms can't replicate — intentional, purposeful storytelling with real constraints.</p>
+          <div class="blog-meta" style="margin-bottom:14px">
+            <span>May 22, 2026</span><span>·</span><span>5 min read</span>
+          </div>
+          <a href="#" class="read-link">Read Article →</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-card-img" style="background:linear-gradient(135deg,#1a1a3e,#e07b39)">🏀</div>
+        <div class="post-card-body">
+          <span class="blog-tag">Coaching &amp; Performance</span>
+          <h2>What Coaching Taught Me About Teaching</h2>
+          <p>Film study, practice design, and half-time adjustments. The parallels run deeper than most people realize.</p>
+          <div class="blog-meta" style="margin-bottom:14px">
+            <span>May 5, 2026</span><span>·</span><span>7 min read</span>
+          </div>
+          <a href="#" class="read-link">Read Article →</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-card-img" style="background:linear-gradient(135deg,#0d2e1a,#22c55e)">🎮</div>
+        <div class="post-card-body">
+          <span class="blog-tag">Creative Technology</span>
+          <h2>Game Design Is 21st-Century Literacy</h2>
+          <p>If we want students to understand the designed world they live in, we need to teach them how to build interactive systems — not just consume them.</p>
+          <div class="blog-meta" style="margin-bottom:14px">
+            <span>April 18, 2026</span><span>·</span><span>5 min read</span>
+          </div>
+          <a href="#" class="read-link">Read Article →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <section id="newsletter" style="background:linear-gradient(135deg,var(--navy) 0%,#0f2a4a 100%);padding:60px 0">
+    <div class="container" style="text-align:center;max-width:560px">
+      <p class="section-label">Never Miss a Post</p>
+      <h2 style="color:var(--white);font-size:2rem;margin-bottom:12px">Get it in your inbox</h2>
+      <p style="color:rgba(255,255,255,0.6);margin-bottom:28px">Free, biweekly, unsubscribe any time.</p>
+      <form style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center" action="/#newsletter">
+        <input type="email" class="form-input" placeholder="Your email" style="flex:1;min-width:220px">
+        <button type="submit" class="btn btn-teal">Subscribe →</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0">
+        <a href="/">← Back to chadwadden.ca</a>
+        <span>© 2026 Chad Wadden</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

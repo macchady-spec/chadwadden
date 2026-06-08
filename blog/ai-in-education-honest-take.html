@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI in Education: A Classroom Teacher's Honest Take — Chad Wadden</title>
+  <meta name="description" content="What actually works when integrating AI in classrooms, what doesn't, and why the real question is about learning design — not the tools.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { padding-top: 68px; background: var(--cream); }
+
+    .post-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e4d8c 100%);
+      padding: 70px 0 60px;
+    }
+
+    .post-hero .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .post-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      color: var(--white);
+      max-width: 760px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .post-hero .post-deck {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .post-body-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .post-body h2 {
+      font-family: var(--font-head);
+      font-size: 1.7rem;
+      color: var(--navy);
+      margin: 48px 0 16px;
+    }
+
+    .post-body h3 {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 32px 0 12px;
+    }
+
+    .post-body p {
+      font-size: 1.05rem;
+      color: var(--gray-700);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .post-body strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .post-body ul, .post-body ol {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+
+    .post-body li {
+      font-size: 1.05rem;
+      color: var(--gray-700);
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--teal);
+      padding: 16px 24px;
+      margin: 32px 0;
+      background: rgba(14,165,160,0.06);
+      border-radius: 0 8px 8px 0;
+    }
+
+    blockquote p {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin: 0;
+      font-style: italic;
+    }
+
+    .post-divider {
+      height: 1px;
+      background: var(--gray-100);
+      margin: 40px 0;
+    }
+
+    .post-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .post-tag-chip {
+      padding: 6px 14px;
+      background: var(--gray-100);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    .author-box {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      padding: 28px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 48px 0;
+    }
+
+    .author-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .author-box h4 {
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .author-box p {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0;
+      border-top: 1px solid var(--gray-100);
+      gap: 20px;
+    }
+
+    .post-nav a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-mark">CW</div>
+        <div class="logo-text">
+          <span class="name">Chad Wadden</span>
+          <span class="tagline-sm">Educator · Coach · Writer</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#pillars">Work</a></li>
+        <li><a href="/blog/" class="active">Writing</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/coaching/">Coaching</a></li>
+        <li><a href="/#speaking">Speaking</a></li>
+        <li><a href="/#about-strip">About</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/#newsletter" class="btn btn-primary">Get the Newsletter →</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Post Hero -->
+  <div class="post-hero">
+    <div class="container">
+      <div class="post-meta">
+        <span class="blog-tag" style="background:rgba(14,165,160,0.15);padding:5px 12px;border-radius:100px">AI in Education</span>
+        <span style="color:rgba(255,255,255,0.4);font-size:0.85rem">June 8, 2026 · 6 min read</span>
+      </div>
+      <h1>AI in Education: A Classroom Teacher's Honest Take</h1>
+      <p class="post-deck">What actually works, what doesn't, and why the real question isn't about the tools.</p>
+    </div>
+  </div>
+
+  <!-- Post Body -->
+  <div class="post-body-wrap">
+    <article class="post-body">
+
+      <p>
+        Every professional development session I've sat in for the past two years has covered AI in some form. The range is enormous — from breathless enthusiasm about revolutionary transformation to outright panic about academic integrity. Most of it misses the point.
+      </p>
+
+      <p>
+        I've been teaching digital media, game design, and technology courses for over a decade. I'm on the HRCE AI Steering Committee. I use AI tools with students regularly. What I'm about to share isn't a hot take from the outside — it's what I've actually seen in classrooms, and what I think educators need to hear.
+      </p>
+
+      <blockquote>
+        <p>The question isn't "should we use AI?" That ship has sailed. The question is: "what does good learning design look like when your students have access to powerful generative tools?"</p>
+      </blockquote>
+
+      <h2>What's Actually Working</h2>
+
+      <p>
+        Let me start with the things that have genuinely improved learning in my classroom — not theoretically, but in practice with real students.
+      </p>
+
+      <h3>1. AI as a thinking partner, not an answer machine</h3>
+      <p>
+        When I ask students to use AI tools to <strong>generate a first draft and then critique it</strong>, something interesting happens. They start noticing what's wrong. They argue back. They improve the output. That process — generate, evaluate, refine — is actually developing a skill that didn't exist before: prompt literacy combined with critical thinking.
+      </p>
+      <p>
+        The students who struggle most aren't the ones who "use AI too much" — they're the ones who accept the first output uncritically. The solution isn't banning the tool. It's redesigning the task.
+      </p>
+
+      <h3>2. Differentiation that actually scales</h3>
+      <p>
+        I teach courses with significant skill variance. Some students are reading at a grade 10 level, some at a grade 12 level — in the same class. AI tools let me quickly create levelled versions of explanations, examples, and practice materials that would have taken me hours to produce manually. This is real and it's significant.
+      </p>
+
+      <h3>3. Media production workflows</h3>
+      <p>
+        In broadcast and digital media, AI-assisted tools have become part of the professional workflow. Teaching students to use them responsibly — understanding what they do, when to use them, and what they take away from the craft — is now part of media literacy. Not separate from it.
+      </p>
+
+      <h2>What Isn't Working — And Why</h2>
+
+      <p>
+        I want to be direct here, because there's too much cheerleading happening and not enough honest reflection.
+      </p>
+
+      <h3>The assessment problem is real</h3>
+      <p>
+        Any assessment that asks students to produce a standalone text artifact — an essay, a report, a written analysis — is now fundamentally compromised if submitted digitally. Not because students are cheating more than before, but because the threshold has moved. The solution is not better AI detection software. <strong>Detection tools are a losing game.</strong> The solution is redesigning assessments around process, conversation, demonstration, and production.
+      </p>
+
+      <h3>Most professional development is too surface-level</h3>
+      <p>
+        Showing teachers a demo of ChatGPT generating a lesson plan is not professional development on AI in education. It's a product demonstration. What teachers actually need is time to redesign their assessment and task structures with a clear understanding of what AI can and cannot do. That takes time, trust, and pedagogical leadership — not a 45-minute lunch session.
+      </p>
+
+      <h3>Equity isn't being addressed honestly</h3>
+      <p>
+        Students with home access to premium AI tools are developing AI skills faster than students without it. We're creating a new version of the digital divide in real time. Schools that haven't thought about this are already behind.
+      </p>
+
+      <h2>The Reframe That Changed How I Think About This</h2>
+
+      <p>
+        A colleague asked me a question last year that stuck with me: <em>"What's the irreducible human part of this task?"</em>
+      </p>
+
+      <p>
+        When I design learning experiences now, I ask that question first. What does this task require that an AI can't replicate? Original observation. Personal experience. Live performance. Real conversation. Judgment under uncertainty. Creative risk. The ability to defend a position under questioning.
+      </p>
+
+      <p>
+        Those are the things worth assessing. And honestly? They were always the things worth assessing. AI hasn't changed the destination — it's just forced us to be honest about whether our old tasks were actually getting us there.
+      </p>
+
+      <h2>What I'd Tell Every Teacher Right Now</h2>
+
+      <ul>
+        <li><strong>Start with one task.</strong> Pick one assignment you're currently running and ask: "what does this look like in an AI-accessible world?" Redesign just that one thing.</li>
+        <li><strong>Use the tools yourself.</strong> You can't teach critical use of something you've never critically used. Spend time with them — not to become an expert, but to develop intuition.</li>
+        <li><strong>Talk to your students about it openly.</strong> They are using these tools. Having honest conversations about how, when, and why is more valuable than pretending the tools don't exist.</li>
+        <li><strong>Push back on bad PD.</strong> If a session is just tool demos with no pedagogical design component, say something. Advocate for the time and support you actually need.</li>
+        <li><strong>Focus on the learning, not the policy.</strong> Policies matter, but they lag behind the reality every time. The educators who are navigating this well are the ones who stayed grounded in the question: "what does good learning look like here?"</li>
+      </ul>
+
+      <div class="post-divider"></div>
+
+      <p>
+        I don't have all the answers on this. Nobody does right now — anyone who tells you otherwise is selling something. But I do know that the educators who will serve students best through this shift are the ones staying curious, staying honest, and staying focused on the learning itself.
+      </p>
+
+      <p>
+        That's always been the job. AI just made it more visible.
+      </p>
+
+      <div class="post-tags">
+        <span class="post-tag-chip">AI in Education</span>
+        <span class="post-tag-chip">Classroom Practice</span>
+        <span class="post-tag-chip">Assessment Design</span>
+        <span class="post-tag-chip">Professional Development</span>
+      </div>
+
+      <!-- Author Box -->
+      <div class="author-box">
+        <div class="author-avatar">👤</div>
+        <div>
+          <h4>Chad Wadden</h4>
+          <p>Department Head and teacher at HRCE. Member of the HRCE AI Steering Committee. Writing about education, creative technology, and coaching every two weeks.</p>
+        </div>
+      </div>
+
+      <!-- Post Nav -->
+      <div class="post-nav">
+        <a href="index.html">← All Writing</a>
+        <a href="/#newsletter">Subscribe to the Newsletter →</a>
+      </div>
+
+    </article>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
