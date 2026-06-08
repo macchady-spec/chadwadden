@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Coaching Taught Me About Teaching — Chad Wadden</title>
+  <meta name="description" content="After years coaching basketball and teaching in the classroom, the parallels are deeper than most people admit. Film study, practice design, halftime adjustments — these aren't metaphors. They're methodology.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { padding-top: 68px; background: var(--cream); }
+
+    .post-hero {
+      background: linear-gradient(135deg, #1a0a00 0%, #3d1a00 60%, #e07b39 100%);
+      padding: 70px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('../images/chad-basketball.JPG') center/cover no-repeat;
+      opacity: 0.18;
+    }
+
+    .post-hero .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      color: var(--white);
+      max-width: 760px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-hero .post-deck {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 640px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-body-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .post-body h2 {
+      font-family: var(--font-head);
+      font-size: 1.7rem;
+      color: var(--navy);
+      margin: 48px 0 16px;
+    }
+
+    .post-body h3 {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 32px 0 12px;
+    }
+
+    .post-body p {
+      font-size: 1.05rem;
+      color: var(--gray-700);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .post-body strong { color: var(--navy); font-weight: 700; }
+
+    .post-body ul, .post-body ol {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+
+    .post-body li {
+      font-size: 1.05rem;
+      color: var(--gray-700);
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 32px 0;
+      background: rgba(224,123,57,0.06);
+      border-radius: 0 8px 8px 0;
+    }
+
+    blockquote p {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin: 0;
+      font-style: italic;
+    }
+
+    .post-divider { height: 1px; background: var(--gray-100); margin: 40px 0; }
+
+    .post-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .post-tag-chip {
+      padding: 6px 14px;
+      background: var(--gray-100);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    .author-box {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 48px 0;
+    }
+
+    .author-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .author-box h4 { font-size: 0.95rem; color: var(--navy); margin-bottom: 4px; }
+    .author-box p { font-size: 0.85rem; color: var(--gray-500); margin: 0; line-height: 1.5; }
+
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0;
+      border-top: 1px solid var(--gray-100);
+      gap: 20px;
+    }
+
+    .post-nav a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-mark">CW</div>
+        <div class="logo-text">
+          <span class="name">Chad Wadden</span>
+          <span class="tagline-sm">Educator · Coach · Writer</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#pillars">Work</a></li>
+        <li><a href="/blog/" class="active">Writing</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/coaching/">Coaching</a></li>
+        <li><a href="/#speaking">Speaking</a></li>
+        <li><a href="/#about-strip">About</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/#newsletter" class="btn btn-primary">Get the Newsletter →</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="post-hero">
+    <div class="container">
+      <div class="post-meta">
+        <span class="blog-tag" style="background:rgba(224,123,57,0.2);padding:5px 12px;border-radius:100px">Coaching &amp; Performance</span>
+        <span style="color:rgba(255,255,255,0.4);font-size:0.85rem">May 26, 2026 · 7 min read</span>
+      </div>
+      <h1>What Coaching Taught Me About Teaching</h1>
+      <p class="post-deck">Film study, practice design, and halftime adjustments. The parallels run deeper than most people admit — and they go both ways.</p>
+    </div>
+  </div>
+
+  <div class="post-body-wrap">
+    <article class="post-body">
+
+      <p>
+        I have been coaching basketball for most of my adult life. High school, university club, AAU, youth programs — the gym has been a constant. And for nearly as long, I have been teaching in a classroom. Most people treat those two things as separate. I don't think they are.
+      </p>
+
+      <p>
+        The longer I've done both, the more I've come to believe that coaching is just teaching under pressure — and that teaching, done well, requires the same kind of structured intentionality that good coaching demands. The language is different. The environment is different. But the core work is remarkably similar.
+      </p>
+
+      <p>
+        Here's what the gym taught me that I carried into Room 112.
+      </p>
+
+      <h2>Practice Design Is Lesson Design</h2>
+
+      <p>
+        Every basketball coach knows this: a bad practice plan produces a bad practice. You can walk in with great energy, a sharp whistle, and 15 years of experience — and still waste ninety minutes if the plan is wrong. Too much standing around. Too much coach talking, not enough player doing. Drills that don't transfer to game situations. A flow that loses players by the forty-minute mark.
+      </p>
+
+      <p>
+        The fix isn't motivation. It's design.
+      </p>
+
+      <p>
+        The same is true in a classroom. I have watched great teachers — genuinely knowledgeable, warm, experienced — deliver forgettable lessons because the design was off. The task structure didn't create enough thinking. The pacing dragged. Students sat too long in one mode before being asked to shift. There was no moment of genuine challenge that required students to extend themselves.
+      </p>
+
+      <blockquote>
+        <p>The difference between a good practice and a great one isn't talent or effort. It's the intentionality of the design.</p>
+      </blockquote>
+
+      <p>
+        What coaching taught me about practice design is this: <strong>every minute needs a job.</strong> Not filler. Not transition time that bleeds into something else. Not a drill that makes players feel busy without building anything. When I write lesson plans now, I think in those terms. What does this ten minutes accomplish? What skill is being built, what thinking is being demanded? If I can't answer that, I cut it or redesign it.
+      </p>
+
+      <h2>Film Study Is Formative Assessment</h2>
+
+      <p>
+        We started doing film sessions with our program years ago. Sitting in a dark room watching game footage with players is uncomfortable at first — nobody loves seeing their mistakes slowed down and projected — but it changes the way athletes think about their performance. They start seeing the game differently. They start self-correcting in real time because they've seen what the error looks like from outside themselves.
+      </p>
+
+      <p>
+        That process is exactly what formative assessment is supposed to do in a classroom, and usually doesn't.
+      </p>
+
+      <p>
+        Most formative assessment in schools is performative. Teachers collect it, students see a grade or a comment, and the loop closes there. Real formative assessment — the kind that changes what happens next — requires students to look at their own work with some distance, compare it to what good looks like, and make a specific adjustment. That's film study. It just happens on paper instead of a screen.
+      </p>
+
+      <p>
+        The best assessment conversations I've had with students have been the ones that feel like film review. "Look at this paragraph. You made a claim. Did you support it? What does a supported claim look like? Where are we in relation to that?" Not grading. Coaching.
+      </p>
+
+      <h2>The Halftime Adjustment</h2>
+
+      <p>
+        Any coach worth their clipboard knows that the plan you walked in with at tip-off isn't always the plan you run in the second half. The other team adjusted. Your point guard is struggling with their pressure. Your zone isn't working the way it did in practice. You read the game, you identify the problem, and you make a change — quickly, clearly, without losing the locker room.
+      </p>
+
+      <p>
+        That skill — reading the room, adjusting mid-stream, not getting married to the plan — is one of the most underrated teaching skills there is.
+      </p>
+
+      <p>
+        I've watched colleagues deliver a lesson that clearly isn't landing. Students are disengaged, the work isn't happening, the energy is wrong. And they just keep going. They finish the slides. They hit all the points. The lesson ends and they wonder why students didn't get it.
+      </p>
+
+      <p>
+        The halftime adjustment in teaching looks like this: you stop. You read the room. You ask a question to diagnose what's actually happening. And then you change the play. That might mean scrapping the next activity and going live — a class discussion, a quick pair share, a single problem on the board worked through together. It might mean ending early and starting over tomorrow with a better approach.
+      </p>
+
+      <p>
+        <strong>The willingness to make the halftime adjustment is what separates coaches who develop players from coaches who just run practices. The same is true for teachers.</strong>
+      </p>
+
+      <h2>Culture Is the System</h2>
+
+      <p>
+        Every successful program I've been around — as a player, an assistant, a head coach — has had one thing in common: the culture was the system. Not the plays. Not the sets. Not the defensive scheme. The habits, expectations, relationships, and standards that everyone in the program lived by every single day. Those things made the plays work. Without them, the playbook was just paper.
+      </p>
+
+      <p>
+        Classrooms work the same way. The teachers whose students consistently perform aren't running magic curriculum. They've built an environment — a culture of accountability, mutual respect, intellectual risk-taking — where good learning can happen. Students know what's expected. They know their teacher believes in them. They know that making mistakes is part of the process, not a verdict on their worth.
+      </p>
+
+      <p>
+        That culture doesn't build itself. It gets designed, maintained, and repaired when it breaks down — just like a program.
+      </p>
+
+      <h2>The Two-Way Street</h2>
+
+      <p>
+        I should be honest: this isn't a one-direction transfer. Teaching has also made me a better coach.
+      </p>
+
+      <p>
+        Years of explaining complex ideas to students who didn't come in wanting to understand them made me a better communicator on the bench. Understanding how people learn — how they build schema, how they need to encounter ideas more than once, how emotional state affects performance — changed how I design practices and how I talk to players in difficult moments.
+      </p>
+
+      <p>
+        The best coaches I've known were also exceptional teachers. Not because they took pedagogy courses, but because they understood that their job was to change how people think and act — and that doing that required more than expertise. It required craft.
+      </p>
+
+      <p>
+        I think that's the thing worth holding onto. Whether you're standing in front of a class or standing at a whiteboard in a gym, the core of the job is the same: you are trying to help people get better at something that matters. That work is worth doing carefully, intentionally, and with real respect for the people on the other side of it.
+      </p>
+
+      <div class="post-divider"></div>
+
+      <div class="post-tags">
+        <span class="post-tag-chip">Coaching</span>
+        <span class="post-tag-chip">Teaching</span>
+        <span class="post-tag-chip">Practice Design</span>
+        <span class="post-tag-chip">Performance Culture</span>
+        <span class="post-tag-chip">Basketball</span>
+      </div>
+
+      <div class="author-box">
+        <div class="author-avatar">
+          <img src="../images/chad-wadden-bw.PNG" alt="Chad Wadden">
+        </div>
+        <div>
+          <h4>Chad Wadden</h4>
+          <p>Teacher, department head, and basketball coach in Halifax, NS. Writing about education, technology, and performance every two weeks.</p>
+        </div>
+      </div>
+
+      <div class="post-nav">
+        <a href="index.html">← All Writing</a>
+        <a href="ai-in-education-honest-take.html">Next: AI in Education →</a>
+      </div>
+
+    </article>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

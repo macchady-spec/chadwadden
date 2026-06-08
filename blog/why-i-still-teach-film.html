@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why I Still Teach Film in a World of TikTok — Chad Wadden</title>
+  <meta name="description" content="Short-form content has changed what students think media is. That's exactly why broadcast production — with its real constraints and intentional craft — matters more than ever.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { padding-top: 68px; background: var(--cream); }
+
+    .post-hero {
+      background: linear-gradient(135deg, #0a1a2e 0%, #0ea5a0 100%);
+      padding: 70px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('../images/chad-teachers.png') center/cover no-repeat;
+      opacity: 0.15;
+    }
+
+    .post-hero .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      color: var(--white);
+      max-width: 760px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-hero .post-deck {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 640px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-body-wrap { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+
+    .post-body h2 { font-family: var(--font-head); font-size: 1.7rem; color: var(--navy); margin: 48px 0 16px; }
+    .post-body h3 { font-family: var(--font-body); font-size: 1.1rem; font-weight: 700; color: var(--navy); margin: 32px 0 12px; }
+    .post-body p { font-size: 1.05rem; color: var(--gray-700); line-height: 1.8; margin-bottom: 20px; }
+    .post-body strong { color: var(--navy); font-weight: 700; }
+    .post-body ul { padding-left: 24px; margin-bottom: 20px; }
+    .post-body li { font-size: 1.05rem; color: var(--gray-700); line-height: 1.75; margin-bottom: 8px; }
+
+    blockquote {
+      border-left: 4px solid var(--teal);
+      padding: 16px 24px;
+      margin: 32px 0;
+      background: rgba(14,165,160,0.06);
+      border-radius: 0 8px 8px 0;
+    }
+    blockquote p { font-family: var(--font-head); font-size: 1.2rem; color: var(--navy); margin: 0; font-style: italic; }
+
+    .post-divider { height: 1px; background: var(--gray-100); margin: 40px 0; }
+    .post-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .post-tag-chip { padding: 6px 14px; background: var(--gray-100); border-radius: 100px; font-size: 0.8rem; font-weight: 600; color: var(--gray-700); }
+
+    .author-box { background: var(--white); border: 1px solid var(--gray-100); border-radius: 14px; padding: 28px; display: flex; align-items: center; gap: 20px; margin: 48px 0; }
+    .author-avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+    .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .author-box h4 { font-size: 0.95rem; color: var(--navy); margin-bottom: 4px; }
+    .author-box p { font-size: 0.85rem; color: var(--gray-500); margin: 0; line-height: 1.5; }
+
+    .post-nav { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; border-top: 1px solid var(--gray-100); gap: 20px; }
+    .post-nav a { font-size: 0.9rem; font-weight: 600; color: var(--blue); display: inline-flex; align-items: center; gap: 8px; }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-mark">CW</div>
+        <div class="logo-text">
+          <span class="name">Chad Wadden</span>
+          <span class="tagline-sm">Educator · Coach · Writer</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#pillars">Work</a></li>
+        <li><a href="/blog/" class="active">Writing</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/coaching/">Coaching</a></li>
+        <li><a href="/#speaking">Speaking</a></li>
+        <li><a href="/#about-strip">About</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/#newsletter" class="btn btn-primary">Get the Newsletter →</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="post-hero">
+    <div class="container">
+      <div class="post-meta">
+        <span class="blog-tag" style="background:rgba(14,165,160,0.2);padding:5px 12px;border-radius:100px">Creative Technology</span>
+        <span style="color:rgba(255,255,255,0.4);font-size:0.85rem">May 10, 2026 · 5 min read</span>
+      </div>
+      <h1>Why I Still Teach Film in a World of TikTok</h1>
+      <p class="post-deck">Short-form content has changed what students think media is. That's exactly why broadcast production — with its real constraints and intentional craft — matters more than ever.</p>
+    </div>
+  </div>
+
+  <div class="post-body-wrap">
+    <article class="post-body">
+
+      <p>
+        Every year, a student asks some version of the same question: "Why are we learning this? Nobody watches TV anymore."
+      </p>
+
+      <p>
+        It's a fair question. My broadcast and digital media students are growing up in a world shaped by 15-second clips, vertical video, and content designed to be consumed without sound. They have more production tools in their pocket than a professional studio had in 1990. They post constantly. Most of them have never sat down and watched a documentary start to finish by choice.
+      </p>
+
+      <p>
+        So why do I still run a broadcast production program that teaches scripting, shooting, editing, and storytelling the long way?
+      </p>
+
+      <p>
+        Because the short way is teaching them things I don't want them to think are normal.
+      </p>
+
+      <h2>What TikTok Teaches — and Doesn't</h2>
+
+      <p>
+        I want to be clear: I am not against short-form content. TikTok, Reels, YouTube Shorts — these are legitimate formats with real craft behind them when done well. The best short-form creators are actually exceptional storytellers working within brutal constraints.
+      </p>
+
+      <p>
+        But that's not what most students experience when they consume or create short-form content. What they experience is:
+      </p>
+
+      <ul>
+        <li>Rapid cutting designed to prevent boredom, not build meaning</li>
+        <li>Hooks that exist to stop the scroll, not to earn attention</li>
+        <li>Sound and music doing the emotional heavy lifting so the images don't have to</li>
+        <li>Immediate feedback loops (views, likes) that reward novelty over substance</li>
+      </ul>
+
+      <p>
+        When students come into my class having consumed thousands of hours of that content, they have developed some deeply embedded assumptions about what media is and how it works. The biggest one: <strong>that the audience owes you their attention and it's your job to grab it in the first two seconds before they leave.</strong>
+      </p>
+
+      <p>
+        Broadcast production teaches the opposite.
+      </p>
+
+      <h2>The Constraint Is the Point</h2>
+
+      <p>
+        When I put students through the process of producing a two-minute news package — real interviews, b-roll, scripted narration, natural sound, a tight edit — I am not teaching them to be broadcast journalists. I am teaching them to make every second count through deliberate choice, not algorithmic panic.
+      </p>
+
+      <p>
+        That process requires them to:
+      </p>
+
+      <ul>
+        <li>Decide what the story actually is before they pick up a camera</li>
+        <li>Think about what images serve the story rather than just what looks cool</li>
+        <li>Write sentences that work when spoken aloud by a human being</li>
+        <li>Make editing decisions based on meaning and pacing, not just motion</li>
+        <li>Stand behind the work when it's screened for a real audience</li>
+      </ul>
+
+      <blockquote>
+        <p>The constraint isn't the limitation. The constraint is where the learning lives.</p>
+      </blockquote>
+
+      <p>
+        When students can't just add a trending audio and call it done, they have to actually think. That thinking is what I'm after. The broadcast format is just the vehicle.
+      </p>
+
+      <h2>Media Literacy Isn't Just Consumption</h2>
+
+      <p>
+        We talk a lot in education about media literacy — the ability to critically evaluate media, understand how it works, identify bias and technique. Most of that conversation focuses on consumption. Students as audience, learning to read what's in front of them.
+      </p>
+
+      <p>
+        Production literacy is different. When you have been behind the camera, made the editing decisions, written the script, and then watched an audience respond — you start to see the choices that other producers are making. You understand that every cut is a decision. Every frame is a decision. The music is a decision. The voice-over cadence is a decision. None of it is neutral.
+      </p>
+
+      <p>
+        That understanding transfers everywhere. Students who have built media start to ask different questions about the media they consume. That is, I think, one of the most valuable things a school can teach right now.
+      </p>
+
+      <h2>The AI Question</h2>
+
+      <p>
+        I should address it because everyone is thinking it: does generative AI change any of this?
+      </p>
+
+      <p>
+        Somewhat. AI tools are already part of professional media workflows — audio cleanup, transcription, rough cut assistance, visual effects that would have taken days now taking minutes. I use some of them. My students experiment with them.
+      </p>
+
+      <p>
+        But here's what I've observed: students who don't understand the fundamentals of storytelling, pacing, and editorial decision-making don't use AI tools well. They generate content they can't evaluate. They can't tell what's wrong or how to fix it because they don't have the underlying craft to compare against.
+      </p>
+
+      <p>
+        The fundamentals aren't threatened by AI. They're more necessary because of it.
+      </p>
+
+      <p>
+        So yes, I still teach film. I still put students through the uncomfortable, slow, demanding work of making something with real constraints and standing behind it. Not because the format is timeless — it isn't. But because the thinking it develops is.
+      </p>
+
+      <div class="post-divider"></div>
+
+      <div class="post-tags">
+        <span class="post-tag-chip">Creative Technology</span>
+        <span class="post-tag-chip">Media Literacy</span>
+        <span class="post-tag-chip">Broadcast</span>
+        <span class="post-tag-chip">Curriculum Design</span>
+      </div>
+
+      <div class="author-box">
+        <div class="author-avatar">
+          <img src="../images/chad-wadden-bw.PNG" alt="Chad Wadden">
+        </div>
+        <div>
+          <h4>Chad Wadden</h4>
+          <p>Teacher, department head, and basketball coach in Halifax, NS. Writing about education, technology, and performance every two weeks.</p>
+        </div>
+      </div>
+
+      <div class="post-nav">
+        <a href="index.html">← All Writing</a>
+        <a href="what-coaching-taught-me-about-teaching.html">Next: What Coaching Taught Me →</a>
+      </div>
+
+    </article>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
