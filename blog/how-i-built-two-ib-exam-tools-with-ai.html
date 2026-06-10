@@ -124,6 +124,41 @@
       gap: 6px;
       margin-top: 8px;
     }
+    .app-preview .live-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      padding: 8px 16px;
+      background: rgba(232,184,75,0.12);
+      border: 1px solid rgba(232,184,75,0.35);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #E8B84B;
+      text-decoration: none;
+      width: fit-content;
+      transition: background 0.2s;
+    }
+    .app-preview .live-link:hover { background: rgba(232,184,75,0.22); }
+
+    .app-screenshot {
+      margin: 24px 0 32px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    }
+    .app-screenshot img { width: 100%; display: block; }
+    .app-screenshot figcaption {
+      background: #0a1020;
+      padding: 10px 16px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      font-style: italic;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
     .feature-chip {
       padding: 4px 10px;
       border-radius: 100px;
@@ -244,7 +279,15 @@
           <span class="feature-chip">PDF + image upload</span>
           <span class="feature-chip">Offline export</span>
         </div>
+        <a href="https://macchady-spec.github.io/ib_paperPractice/" target="_blank" rel="noopener" class="live-link">
+          ↗ Try it live
+        </a>
       </div>
+
+      <figure class="app-screenshot">
+        <img src="../images/ib-practice-studio-screenshot.png" alt="IB DigSoc Exam Practice Studio — rubric panel, stamp annotations, and score estimator" onerror="this.closest('figure').style.display='none'">
+        <figcaption>The Exam Practice Studio: select your paper type, upload your response, stamp-annotate it, and work through the official rubric to estimate your band.</figcaption>
+      </figure>
 
       <p>
         The second tool — which I built after the first one and is considerably more complex — is the <strong>DigSoc Response Studio</strong>. This one walks students through a seven-step process: understand the question, think like a high-scoring student, brainstorm before writing, write the full response, annotate it with inline text highlights, self-assess against the rubric, and then generate a tailored AI feedback prompt they can paste into Claude or ChatGPT. It covers every question type across Paper 1 and Paper 2, with specific rubric logic, checklists, and exemplar guidance for each. It also has a demo mode that loads a full worked example — a real IB-style question on Instagram and social class — with a complete model response, annotations already placed, and a checklist that shows exactly why the response hits the top band.
@@ -263,7 +306,15 @@
           <span class="feature-chip">Local autosave</span>
           <span class="feature-chip">JSON import/export</span>
         </div>
+        <a href="https://macchady-spec.github.io/ib_paperPractice/ibdsdiag" target="_blank" rel="noopener" class="live-link">
+          ↗ Try it live
+        </a>
       </div>
+
+      <figure class="app-screenshot">
+        <img src="../images/ib-response-studio-screenshot.png" alt="DigSoc Response Studio — 7-step guided workflow with inline annotation and rubric self-assessment" onerror="this.closest('figure').style.display='none'">
+        <figcaption>The Response Studio: a 7-step guided process from understanding the question to generating a personalised AI feedback prompt — covering every IB Digital Society question type.</figcaption>
+      </figure>
 
       <p>
         Both tools run entirely in the browser as single HTML files. No login, no server, no subscription, no data sent anywhere. A student can open one on a Chromebook in a school with no internet and it still works. That was non-negotiable for me.
