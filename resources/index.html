@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources — Chad Wadden</title>
+  <meta name="description" content="Resources from Chad Wadden — coming soon.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { padding-top: 68px; background: var(--navy); min-height: 100vh; display: flex; flex-direction: column; }
+
+    .coming-soon {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .coming-soon-inner { max-width: 520px; }
+
+    .coming-soon-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: rgba(14,165,160,0.12);
+      border: 1px solid rgba(14,165,160,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+    }
+
+    .coming-soon h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .coming-soon p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .coming-soon .btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-mark">CW</div>
+        <div class="logo-text">
+          <span class="name">Chad Wadden</span>
+          <span class="tagline-sm">Educator · Coach · Writer</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#pillars">Work</a></li>
+        <li><a href="/blog/">Writing</a></li>
+        <li><a href="/resources/" class="active">Resources</a></li>
+        <li><a href="/coaching/">Coaching</a></li>
+        <li><a href="mailto:chad@chadwadden.ca">Contact</a></li>
+        <li><a href="/#about-strip">About</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/#newsletter" class="btn btn-primary">Get the Newsletter →</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="coming-soon">
+    <div class="coming-soon-inner">
+      <div class="coming-soon-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(14,165,160,0.9)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <p class="section-label" style="margin-bottom:12px">Resources</p>
+      <h1>Something Good<br>Is Coming</h1>
+      <p>I'm building out a library of curriculum tools, AI resources, and teaching frameworks. It's not ready yet — but it will be worth the wait.</p>
+      <div class="btn-group">
+        <a href="/#newsletter" class="btn btn-teal">Get notified when it's live →</a>
+        <a href="/blog/" class="btn btn-outline" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)">Read the blog</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
