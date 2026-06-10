@@ -3,113 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coaching Performance — Chad Wadden</title>
-  <meta name="description" content="Basketball coaching resources, practice plans, and performance leadership from Chad Wadden.">
+  <title>Coaching — Chad Wadden</title>
+  <meta name="description" content="Basketball coaching resources, practice plans, and performance leadership from Chad Wadden — coming soon.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    body { padding-top: 68px; }
+    body { padding-top: 68px; background: #1a0a00; min-height: 100vh; display: flex; flex-direction: column; }
 
-    .coaching-hero {
-      background: linear-gradient(135deg, #1a0a00 0%, #3d1a00 50%, #e07b39 100%);
-      padding: 80px 0 60px;
-      position: relative;
-      overflow: hidden;
-    }
-    .coaching-hero::before {
-      content: '🏀';
-      position: absolute;
-      font-size: 20rem;
-      right: -40px;
-      top: -40px;
-      opacity: 0.06;
-      pointer-events: none;
+    .coming-soon {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      text-align: center;
     }
 
-    .coaching-hero h1 {
+    .coming-soon-inner { max-width: 520px; }
+
+    .coming-soon-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: rgba(224,123,57,0.12);
+      border: 1px solid rgba(224,123,57,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      font-size: 2rem;
+    }
+
+    .coming-soon h1 {
       font-family: var(--font-head);
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      color: var(--white);
-      margin-bottom: 14px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .coaching-hero p {
-      color: rgba(255,255,255,0.7);
-      font-size: 1.1rem;
-      max-width: 560px;
-      line-height: 1.7;
-      position: relative;
-      z-index: 1;
-    }
-
-    .coaching-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin: 60px 0;
-    }
-
-    @media (max-width: 768px) {
-      .coaching-grid { grid-template-columns: 1fr; }
-    }
-
-    .coaching-resource-card {
-      background: var(--white);
-      border: 1px solid var(--gray-100);
-      border-radius: 14px;
-      padding: 28px 24px;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s, border-color 0.3s;
-    }
-    .coaching-resource-card:hover { transform: translateY(-3px); border-color: var(--orange); }
-
-    .coaching-resource-card .resource-icon { font-size: 2rem; margin-bottom: 14px; }
-    .coaching-resource-card h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: 8px; }
-    .coaching-resource-card p { font-size: 0.875rem; color: var(--gray-500); line-height: 1.65; margin-bottom: 18px; }
-
-    .philosophy-section {
-      background: var(--navy);
-      padding: 80px 0;
-    }
-
-    .philosophy-section h2 {
-      font-family: var(--font-head);
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-size: clamp(2rem, 5vw, 3rem);
       color: var(--white);
       margin-bottom: 16px;
+      line-height: 1.15;
     }
 
-    .philosophy-section p {
-      color: rgba(255,255,255,0.7);
+    .coming-soon p {
       font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 18px;
-      max-width: 720px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      margin-bottom: 36px;
     }
 
-    .philosophy-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-top: 40px;
+    .coming-soon .btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-
-    @media (max-width: 768px) {
-      .philosophy-grid { grid-template-columns: 1fr; }
-    }
-
-    .philosophy-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 24px;
-    }
-    .philosophy-card h4 { font-family: var(--font-body); font-size: 0.95rem; font-weight: 700; color: var(--orange); margin-bottom: 8px; }
-    .philosophy-card p { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.65; margin: 0; }
   </style>
 </head>
 <body>
@@ -138,136 +85,18 @@
     </div>
   </nav>
 
-  <div class="coaching-hero" style="position:relative;">
-    <div style="position:absolute;inset:0;overflow:hidden;z-index:0;">
-      <img src="../images/chad-basketball.JPG" alt="Championship team" style="width:100%;height:100%;object-fit:cover;opacity:0.18;">
-    </div>
-    <div class="container" style="position:relative;z-index:1;">
-      <p class="section-label">Coaching Performance</p>
-      <h1>Build Culture. Design Practice. Develop Players.</h1>
-      <p>Coaching resources, frameworks, and ideas for basketball coaches at every level — rooted in the same performance principles I bring to the classroom.</p>
-      <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1">
-        <a href="#resources" class="btn btn-primary">Free Resources →</a>
-        <a href="/blog/?filter=coaching" class="btn btn-outline-white">Coaching Articles</a>
+  <div class="coming-soon">
+    <div class="coming-soon-inner">
+      <div class="coming-soon-icon">🏀</div>
+      <p class="section-label" style="margin-bottom:12px;color:rgba(224,123,57,0.8)">Coaching</p>
+      <h1>Something Good<br>Is Coming</h1>
+      <p>I'm putting together coaching resources, practice frameworks, and performance tools built from real seasons. Check back soon — or get notified when it drops.</p>
+      <div class="btn-group">
+        <a href="/#newsletter" class="btn btn-primary">Get notified when it's live →</a>
+        <a href="/blog/" class="btn btn-outline" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)">Read the blog</a>
       </div>
     </div>
   </div>
-
-
-  <section style="background:var(--cream);padding:80px 0" id="resources">
-    <div class="container">
-      <p class="section-label" style="text-align:center">Resources</p>
-      <h2 style="text-align:center;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--navy);margin-bottom:12px">Coaching Tools That Actually Get Used</h2>
-      <p style="text-align:center;color:var(--gray-500);max-width:520px;margin:0 auto 0;line-height:1.7">
-        No fluff, no filler. Practical resources built from real seasons.
-      </p>
-
-      <div class="coaching-grid">
-
-        <div class="coaching-resource-card">
-          <div class="resource-icon">📋</div>
-          <span class="resource-badge free">Free</span>
-          <h3>Practice Plan Templates</h3>
-          <p>30, 60, and 90-minute practice blueprints for youth and high school. Built around intentional repetition and competitive drills.</p>
-          <a href="/#newsletter" class="resource-btn free-btn">Download Free →</a>
-        </div>
-
-        <div class="coaching-resource-card">
-          <div class="resource-icon">📊</div>
-          <span class="resource-badge free">Free</span>
-          <h3>Season Planning Overview</h3>
-          <p>A one-page framework for mapping your season: preseason culture, in-season adjustments, and postseason evaluation.</p>
-          <a href="/#newsletter" class="resource-btn free-btn">Download Free →</a>
-        </div>
-
-        <div class="coaching-resource-card">
-          <div class="resource-icon">🎬</div>
-          <span class="resource-badge free">Free</span>
-          <h3>Film Study Starter Guide</h3>
-          <p>How to run your first film session. What to look for, how to present it, and how to make it a habit without burning players out.</p>
-          <a href="/#newsletter" class="resource-btn free-btn">Download Free →</a>
-        </div>
-
-        <div class="coaching-resource-card">
-          <div class="resource-icon">🏆</div>
-          <span class="resource-badge paid">Premium</span>
-          <h3>Full Season Coaching Framework</h3>
-          <p>The complete system: team culture build, practice design, scouting, game planning, player development tracking, and end-of-season review.</p>
-          <a href="#" class="resource-btn">Get Access →</a>
-        </div>
-
-        <div class="coaching-resource-card">
-          <div class="resource-icon">🧠</div>
-          <span class="resource-badge paid">Premium</span>
-          <h3>Player Development System</h3>
-          <p>Individual player assessment, skill priority mapping, and a development conversation framework coaches can use one-on-one.</p>
-          <a href="#" class="resource-btn">Get Access →</a>
-        </div>
-
-        <div class="coaching-resource-card">
-          <div class="resource-icon">✍️</div>
-          <span class="resource-badge free">Articles</span>
-          <h3>Coaching Writing</h3>
-          <p>Read articles on coaching philosophy, building team culture, practice design, and the overlap between coaching and teaching.</p>
-          <a href="/blog/" class="resource-btn">Read the Blog →</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="philosophy-section" id="philosophy">
-    <div class="container">
-      <p class="section-label">Coaching Philosophy</p>
-      <h2>The Approach</h2>
-      <p>
-        Basketball has been a huge part of my life — as a player, as a coach, and as someone who has watched what performance culture can do for young people when it's built right. The lessons from the gym show up in my classroom every day, and the lessons from the classroom make me a better coach.
-      </p>
-      <p>
-        What I believe about coaching, at every level:
-      </p>
-
-      <div class="philosophy-grid">
-        <div class="philosophy-card">
-          <h4>Culture First, Always</h4>
-          <p>Programs that last are built on values, standards, and relationships — not just skill development. You have to build the environment before you build the players.</p>
-        </div>
-        <div class="philosophy-card">
-          <h4>Design the Practice</h4>
-          <p>Random reps don't make good players. Intentional, competitive, purposefully designed practice time is the difference between going through the motions and real improvement.</p>
-        </div>
-        <div class="philosophy-card">
-          <h4>Develop the Whole Athlete</h4>
-          <p>Basketball is a vehicle. The goal is young people who know how to work, compete, handle failure, lead, and perform under pressure. That skill set outlasts their last game.</p>
-        </div>
-        <div class="philosophy-card">
-          <h4>Coaches Are Teachers</h4>
-          <p>The best coaches I've learned from are great teachers. They can explain, demonstrate, adjust, and connect with their players as learners. That's the craft worth developing.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="newsletter" style="background:var(--cream);padding:60px 0">
-    <div class="container" style="text-align:center;max-width:560px">
-      <p class="section-label">Stay Connected</p>
-      <h2 style="font-size:2rem;color:var(--navy);margin-bottom:12px">Coaching + Education ideas in your inbox</h2>
-      <p style="color:var(--gray-500);margin-bottom:28px">Biweekly newsletter covering both pillars. Free forever.</p>
-      <form style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
-        <input type="email" class="form-input" placeholder="Your email" style="flex:1;min-width:220px;background:var(--white);color:var(--text);border-color:var(--gray-300)">
-        <button type="submit" class="btn btn-teal">Subscribe →</button>
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-bottom" style="border-top:none;padding-top:0">
-        <a href="/">← Back to chadwadden.ca</a>
-        <span>© 2026 Chad Wadden</span>
-      </div>
-    </div>
-  </footer>
 
   <script src="../js/main.js"></script>
 </body>
