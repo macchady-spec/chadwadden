@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Built My Own Fitness App and It Didn't Kill Me (Much) — Chad Wadden</title>
+  <meta name="description" content="I vibe coded a full fitness app — with AI coaching, a swim builder, exercise demos, and Firebase sync — and I'm here to tell you exactly how it went.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { padding-top: 68px; background: var(--cream); }
+
+    /* ── HERO ── */
+    .post-hero {
+      background: linear-gradient(135deg, #0d0d0d 0%, #1a0a0a 50%, #2d0000 100%);
+      padding: 72px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(220,38,38,0.15) 0%, transparent 70%);
+    }
+    .post-hero .container { position: relative; z-index: 1; max-width: 780px; }
+    .post-hero .blog-tag { margin-bottom: 16px; display: inline-block; }
+    .post-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .post-hero .post-deck {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      margin-bottom: 28px;
+      max-width: 640px;
+    }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .post-meta img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .post-meta-text { display: flex; flex-direction: column; gap: 2px; }
+    .post-meta-text strong { color: var(--white); font-size: 0.9rem; }
+    .post-meta-text span { color: rgba(255,255,255,0.5); font-size: 0.82rem; }
+
+    /* ── APP BADGE ── */
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(220,38,38,0.12);
+      border: 1px solid rgba(220,38,38,0.3);
+      border-radius: 100px;
+      padding: 8px 16px 8px 10px;
+      margin: 4px 0 0;
+    }
+    .app-badge-icon {
+      width: 32px;
+      height: 32px;
+      background: #dc2626;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .app-badge-icon svg { width: 18px; height: 18px; }
+    .app-badge span { font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.85); letter-spacing: 0.03em; }
+    .app-badge a { font-size: 0.78rem; color: rgba(220,38,38,0.8); text-decoration: none; }
+    .app-badge a:hover { color: #ef4444; }
+
+    /* ── ARTICLE BODY ── */
+    .post-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 52px 24px 60px;
+    }
+
+    .post-body p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #2d2d2d;
+      margin-bottom: 1.4em;
+    }
+
+    .post-body h2 {
+      font-family: var(--font-head);
+      font-size: 1.75rem;
+      color: var(--navy);
+      margin: 2.4em 0 0.6em;
+      line-height: 1.2;
+    }
+
+    .post-body h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1.8em 0 0.4em;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .post-body ul, .post-body ol {
+      margin: 0 0 1.4em 1.2em;
+      padding: 0;
+    }
+    .post-body li {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #2d2d2d;
+      margin-bottom: 0.4em;
+    }
+
+    .post-body strong { color: var(--navy); }
+
+    .post-body a { color: var(--blue); text-decoration: underline; }
+    .post-body a:hover { color: var(--teal); }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      border-left: 4px solid #dc2626;
+      padding: 16px 24px;
+      margin: 2em 0;
+      background: rgba(220,38,38,0.04);
+      border-radius: 0 10px 10px 0;
+    }
+    .pull-quote p {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      color: var(--navy);
+      font-style: italic;
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    /* ── APP SCREENSHOTS ── */
+    .app-screenshot {
+      margin: 2.2em 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    }
+    .app-screenshot img {
+      width: 100%;
+      display: block;
+    }
+    .app-screenshot figcaption {
+      background: #f8f9fa;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      border-top: 1px solid #e5e7eb;
+      font-style: italic;
+    }
+
+    /* placeholder for missing screenshots */
+    .screenshot-placeholder {
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      border-radius: 14px;
+      border: 1px dashed rgba(220,38,38,0.4);
+      padding: 60px 24px;
+      text-align: center;
+      margin: 2.2em 0;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+    }
+
+    /* ── STACK TABLE ── */
+    .stack-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.6em 0 2em;
+      font-size: 0.92rem;
+    }
+    .stack-table th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 10px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .stack-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: top;
+      color: #2d2d2d;
+      line-height: 1.5;
+    }
+    .stack-table tr:last-child td { border-bottom: none; }
+    .stack-table tr:nth-child(even) td { background: #f9fafb; }
+    .stack-table .free-badge {
+      display: inline-block;
+      background: rgba(16,185,129,0.1);
+      color: #059669;
+      border: 1px solid rgba(16,185,129,0.3);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      margin-left: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── FEATURE CHIPS ── */
+    .feature-grid {
+      background: #0f0f0f;
+      border-radius: 14px;
+      padding: 28px;
+      margin: 2em 0;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .feature-grid-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+    .feature-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      background: rgba(220,38,38,0.12);
+      border: 1px solid rgba(220,38,38,0.25);
+      border-radius: 100px;
+      padding: 5px 13px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ── NUMBERED TIPS ── */
+    .tip-item {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 1.8em;
+      align-items: flex-start;
+    }
+    .tip-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #dc2626;
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .tip-item p { margin: 0; }
+
+    /* ── TIP BOX ── */
+    .tip-box {
+      background: linear-gradient(135deg, #0d0d0d, #1a0505);
+      border: 1px solid rgba(220,38,38,0.25);
+      border-radius: 14px;
+      padding: 32px 36px;
+      margin: 2.4em 0;
+      color: rgba(255,255,255,0.85);
+    }
+    .tip-box h3 {
+      color: white !important;
+      font-family: var(--font-head);
+      font-size: 1.3rem !important;
+      text-transform: none !important;
+      letter-spacing: 0 !important;
+      margin-top: 0 !important;
+    }
+    .tip-box p { color: rgba(255,255,255,0.7); margin-bottom: 0; }
+    .tip-box a { color: #ef4444; }
+
+    /* ── AUTHOR BOX ── */
+    .author-box {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      padding: 28px;
+      margin-top: 48px;
+    }
+    .author-box img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px solid var(--gray-100);
+    }
+    .author-box-text h4 { font-size: 1rem; color: var(--navy); margin-bottom: 4px; }
+    .author-box-text p { font-size: 0.875rem; color: var(--gray-500); margin: 0; line-height: 1.6; }
+
+    /* ── POST NAV ── */
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-top: 1px solid var(--gray-100);
+      margin-top: 40px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .post-nav a {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .post-nav a:hover { color: var(--teal); }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-mark">CW</div>
+        <div class="logo-text">
+          <span class="name">Chad Wadden</span>
+          <span class="tagline-sm">Educator · Coach · Writer</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#pillars">Work</a></li>
+        <li><a href="/blog/" class="active">Writing</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/coaching/">Coaching</a></li>
+        <li><a href="mailto:chad@chadwadden.ca">Contact</a></li>
+        <li><a href="/#about-strip">About</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/#newsletter" class="btn btn-primary">Get the Newsletter →</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="post-hero">
+    <div class="container">
+      <span class="blog-tag">AI in Education</span>
+      <h1>I Built My Own Fitness App and It Didn't Kill Me (Much)</h1>
+      <p class="post-deck">I'm not a developer. But I shipped a full fitness app — AI coaching, a swim builder, exercise demos, Firebase sync, and a live URL — using nothing but vibe coding and stubbornness.</p>
+      <div class="post-meta">
+        <img src="../images/chad-wadden-bw.PNG" alt="Chad Wadden">
+        <div class="post-meta-text">
+          <strong>Chad Wadden</strong>
+          <span>June 9, 2026 &nbsp;·&nbsp; 9 min read</span>
+        </div>
+      </div>
+      <div style="margin-top:20px">
+        <div class="app-badge">
+          <div class="app-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <span>Chad's Challenge</span><br>
+            <a href="https://cwchallenger.netlify.app/" target="_blank" rel="noopener">cwchallenger.netlify.app ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <div class="post-body">
+
+    <p>Let me paint you a picture.</p>
+
+    <p>It's early 2026. Every fitness app on the planet wants $29.99 a month to tell you to drink water and "trust the process." My Apple Watch is judging me. My gym bag smells like broken promises. And I'm sitting there thinking — <em>what if I just built my own?</em></p>
+
+    <p>Not because I'm a developer. I'm not. Not even close. But we're living in the most interesting moment in human history when it comes to what a regular person with an idea and a bit of stubbornness can pull off. So I did it. I vibe coded a full fitness app — with AI coaching, a swim builder, exercise demo images, Firebase sync, and a live deployment on the web — and I'm here to tell you exactly how it went, warts and all.</p>
+
+    <h2>What Even Is Vibe Coding?</h2>
+
+    <p>If you haven't heard the term, welcome to June 2026 where "vibe coding" is now officially a thing people say in meetings without irony. The concept is simple: you describe what you want in plain English to an AI, it writes the code, you react to what you see, and you keep going.</p>
+
+    <p>You're not writing syntax. You're not debugging semicolons at midnight. You're having a conversation with a very fast, very patient collaborator who happens to know React, TypeScript, Firebase, Tailwind CSS, and about forty other things you've never heard of.</p>
+
+    <div class="pull-quote">
+      <p>The skill isn't coding anymore. The skill is knowing what you want and being able to describe it clearly.</p>
+    </div>
+
+    <p>Which, if you're an educator, communicator, or just someone who's spent time thinking carefully about problems — surprise, you already have that skill.</p>
+
+    <h2>The Idea: An App Built For Me, Not For Everyone</h2>
+
+    <p>Here's my problem with every fitness app ever made: they're built for a fictional person. Some 28-year-old with perfect recovery, unlimited time, and a burning passion for gamified streak badges.</p>
+
+    <p>I swim. I lift. I do Zone 2. I have a neck. Some days I'm a 9/10 ready to crush it, some days I'm a 3/10 and I just need to walk and eat protein. I wanted an app that understood <em>that</em> person — not a template.</p>
+
+    <p>So I started by writing out what I actually needed:</p>
+
+    <ul>
+      <li>A daily readiness score based on real inputs (sleep, stress, energy)</li>
+      <li>Workout plans I actually follow — Upper/Lower splits, a Sculpt Split, Full Body</li>
+      <li>A swim workout builder</li>
+      <li>An AI Coach I could actually talk to about my day</li>
+      <li>Exercise demos that show me what to do without launching YouTube</li>
+      <li>My data synced and safe — and yes, if you're Canadian and care about this: Firebase can store your data in Canadian regions. Privacy matters, and it's configurable.</li>
+    </ul>
+
+    <p>That list became my brief. And I started talking to AI about it.</p>
+
+    <!-- TODAY DASHBOARD SCREENSHOT -->
+    <figure class="app-screenshot">
+      <img src="../images/chads-challenge-today.png" alt="Chad's Challenge — Today dashboard showing Readiness score, Protein, Steps, Water, Sleep metrics, and the Next Action workout card">
+      <figcaption>The Today screen: readiness score, daily metrics, and your next scheduled workout — all in one view.</figcaption>
+    </figure>
+
+    <h2>Layer 1: The Foundation (And The Humbling)</h2>
+
+    <p>The first version was rough. I mean rough in the way that a kindergarten painting is rough — you can tell something's there, you're just not sure what.</p>
+
+    <p>But it worked. There was a screen. There were tabs. Data was saving. The AI had written a React app with TypeScript and Tailwind CSS — a proper modern stack — and I had contributed exactly zero lines of code myself.</p>
+
+    <p>What I did contribute was every single decision:</p>
+
+    <ul>
+      <li><em>"Make it dark. Really dark. Like someone who takes training seriously."</em></li>
+      <li><em>"The icons feel generic. Make them bigger. Make the active one feel different."</em></li>
+      <li><em>"The muscle tags are wrong — 'leg press' shouldn't say Chest."</em></li>
+    </ul>
+
+    <p>This is the job. You're the creative director. The AI is the fastest junior developer you've ever had. Your value is taste, judgment, and knowing when something's off.</p>
+
+    <h2>Layer 2: The Stack (Free Tier Is Real)</h2>
+
+    <p>One thing I want to be really clear about: <strong>you don't need to spend money to get started.</strong></p>
+
+    <table class="stack-table">
+      <thead>
+        <tr><th>Tool</th><th>What It Does</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>React + Vite</strong> <span class="free-badge">FREE</span></td>
+          <td>The app framework. Runs locally on your machine during development.</td>
+        </tr>
+        <tr>
+          <td><strong>Tailwind CSS</strong> <span class="free-badge">FREE</span></td>
+          <td>The visual styling system. Makes dark mode and clean layouts fast.</td>
+        </tr>
+        <tr>
+          <td><strong>Firebase</strong> <span class="free-badge">FREE TIER</span></td>
+          <td>Cloud database + Google auth. Generous free tier. Canadian data regions available.</td>
+        </tr>
+        <tr>
+          <td><strong>GitHub</strong> <span class="free-badge">FREE</span></td>
+          <td>Version control. Where your code lives between sessions.</td>
+        </tr>
+        <tr>
+          <td><strong>Netlify</strong> <span class="free-badge">FREE TIER</span></td>
+          <td>Hosting + auto-deploy. Push to GitHub, app updates automatically.</td>
+        </tr>
+        <tr>
+          <td><strong>Gemini AI</strong> <span class="free-badge">FREE TIER</span></td>
+          <td>Powers the Coach feature inside the app. Free tier available.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The pipeline once it's set up? Chef's kiss. I make a change, write a two-line note in GitHub Desktop, hit push, and Netlify deploys it automatically. I don't touch a terminal. I don't run build commands. It just happens.</p>
+
+    <h2>Layer 3: The Details That Made It Real</h2>
+
+    <p>Once the foundation was solid, I started pushing into territory that felt genuinely new.</p>
+
+    <p><strong>The AI Coach.</strong> This isn't a chatbot bolted on. It knows my training protocol, my current phase, what day it is, and what I told it about my morning. I can say "I slept 5 hours, my shoulder is tight, and I have 45 minutes" and it will plan my day around that. That's not a template. That's coaching.</p>
+
+    <!-- COACH SCREEN SCREENSHOT -->
+    <figure class="app-screenshot">
+      <img src="../images/chads-challenge-coach.png" alt="Chad's Challenge — Coach screen showing AI Planning interface" onerror="this.parentElement.style.display='none';this.parentElement.nextElementSibling.style.display='block'">
+      <figcaption>The Coach screen: describe your day — sleep, stress, available time — and get a real plan back.</figcaption>
+    </figure>
+    <div class="screenshot-placeholder" style="display:none">
+      <p style="margin:0;color:rgba(255,255,255,0.4);font-size:0.85rem">Coach screen screenshot coming soon</p>
+    </div>
+
+    <p><strong>The exercise images.</strong> Rather than linking YouTube videos (which eat data, break, and feel like leaving the app), I wanted simple start-and-finish illustrations for every exercise. So I used AI image generation with prompts like this:</p>
+
+    <div class="pull-quote">
+      <p>"Two-panel fitness reference image, dark studio background, black outfit athlete. Left panel: starting position of [exercise name], label START. Right panel: ending position, label END. Clean, photorealistic, professional training reference."</p>
+    </div>
+
+    <p>I generated about 45 images across my full exercise library. Each one took seconds. Because I controlled the prompt, every image has the same aesthetic — dark background, same athlete, same style. It looks like it was designed, not assembled.</p>
+
+    <p><strong>The swim builder.</strong> I swim 2000m three times a week. The app generates structured pool sessions — warmup, main set, pull work, kick finish — based on distance and goal. Intervals, technique focus, recovery, endurance. It even times the rest periods. Nobody else was going to build that for me.</p>
+
+    <div class="feature-grid">
+      <div class="feature-grid-title">What's Running in Chad's Challenge</div>
+      <div class="feature-chips">
+        <span class="chip">Readiness Score</span>
+        <span class="chip">Upper / Lower / Sculpt / Full Body Plans</span>
+        <span class="chip">45+ Exercise Demos</span>
+        <span class="chip">Swim Builder</span>
+        <span class="chip">AI Coach</span>
+        <span class="chip">Firestore Strength Logging</span>
+        <span class="chip">Rest Timer</span>
+        <span class="chip">Plan Protection</span>
+        <span class="chip">GitHub → Netlify Auto-Deploy</span>
+        <span class="chip">Canadian Data Regions</span>
+      </div>
+    </div>
+
+    <h2>Layer 4: When It Breaks (And It Will)</h2>
+
+    <p>Let me be honest about this part because every blog post about vibe coding glosses over it.</p>
+
+    <p>Things will break. Icons won't import correctly. A button will overwrite your whole week's plan without asking. The image framing will cut off the athlete's head. A rest timer will sit there doing absolutely nothing.</p>
+
+    <p>And here's the thing about those moments: <strong>they're all fixable.</strong> Every single one. Because you can describe what's wrong to your AI collaborator, it can see the code, and you can iterate.</p>
+
+    <p>The muscle tags on my exercises were wrong for weeks — "Leg Press" was labelled as a Chest exercise. Why? Because the code was checking for the word "press" before it checked for "leg press." A specific-before-generic ordering fix. Once I described the bug, it was fixed in minutes.</p>
+
+    <p>The rest timer now counts down. Turns amber. Goes green in the last 10 seconds. Tapping it again cancels. That whole feature? One conversation.</p>
+
+    <p><strong>The iteration is the process.</strong> Don't expect version one to be the thing. Expect version one to be the foundation you build on.</p>
+
+    <h2>Layer 5: The Mindset Shift</h2>
+
+    <p>Here's what I think nobody talks about enough.</p>
+
+    <p>Vibe coding in 2026 isn't about replacing developers. It's about collapsing the distance between an idea and a working thing. That distance used to require months of learning, thousands of dollars of development, or both. Now it requires a clear description and some back-and-forth.</p>
+
+    <p>For educators especially, this matters enormously. We spend our careers translating complex ideas into language that lands. That's exactly the skill that makes vibe coding work. <strong>Precision in communication is the new syntax.</strong></p>
+
+    <div class="pull-quote">
+      <p>What you build doesn't have to be for everyone. It can be for you. Your workflow, your quirks, your swim practice and your neck situation.</p>
+    </div>
+
+    <p>The best software you'll ever use might be the stuff you build yourself, exactly the way you want it. And the best part? When you want to change it, you just ask.</p>
+
+    <h2>What's Actually Running Right Now</h2>
+
+    <p>As of June 2026, Chad's Challenge is live, deployed, and on my phone as a web app bookmark. It has:</p>
+
+    <ul>
+      <li>A Today screen with readiness score, metrics, and next action</li>
+      <li>Three workout plans with 45+ exercise demo images</li>
+      <li>A swim builder that generates real pool sessions</li>
+      <li>An AI Coach that knows my protocol</li>
+      <li>Strength logging that saves to Firestore after every set</li>
+      <li>A rest timer that actually counts down</li>
+      <li>Plan protection so I don't accidentally nuke my week</li>
+      <li>GitHub → Netlify auto-deploy so updates take two clicks</li>
+    </ul>
+
+    <p>Is it perfect? No. Does it do exactly what I need? Completely. Would it exist without vibe coding? Not a chance.</p>
+
+    <h2>Your Turn</h2>
+
+    <p>If you've read this far, here's what I want you to take away:</p>
+
+    <div class="tip-item">
+      <div class="tip-num">1</div>
+      <p><strong>You don't need to be a developer.</strong> You need to know what you want, be able to describe it clearly, and be willing to stay in the conversation when things don't work on the first try.</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">2</div>
+      <p><strong>Start small.</strong> Pick one problem in your life that no app solves quite right. Write down in plain language what the solution would look like. Then start talking to an AI about building it.</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">3</div>
+      <p><strong>The free tiers are real.</strong> React, Firebase, GitHub, Netlify — you can build something that actually works and runs in the cloud for essentially nothing in the early stages.</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">4</div>
+      <p><strong>The gap has never been smaller.</strong> Between "I had this idea" and "it's running on my phone" — that distance is now one conversation deep.</p>
+    </div>
+
+    <p>The only question is whether you're going to keep paying $29.99 a month for someone else's idea of what you need — or build your own.</p>
+
+    <p>I know which one I picked.</p>
+
+    <div class="tip-box">
+      <h3>Want to see what's possible?</h3>
+      <p>Chad's Challenge is a personal app — it's not public. But if you're curious about the build, the decisions behind it, or how vibe coding could work for something <em>you're</em> trying to solve, reach out. I like these conversations. <a href="mailto:chad@chadwadden.ca">chad@chadwadden.ca →</a></p>
+    </div>
+
+    <!-- AUTHOR BOX -->
+    <div class="author-box">
+      <img src="../images/chad-wadden-bw.PNG" alt="Chad Wadden">
+      <div class="author-box-text">
+        <h4>Chad Wadden</h4>
+        <p>AI educator, reluctant app developer, and protocol-driven athlete. Chad's Challenge is his personal fitness app, built entirely through vibe coding sessions with AI. He swims, lifts, and occasionally gets his rest timer to work on the first try.</p>
+      </div>
+    </div>
+
+    <!-- POST NAV -->
+    <nav class="post-nav">
+      <a href="/blog/">← All Writing</a>
+      <a href="how-i-built-two-ib-exam-tools-with-ai.html">Next: I Built Two IB Exam Tools with AI →</a>
+    </nav>
+
+  </div>
+
+  <section id="newsletter" style="background:linear-gradient(135deg,var(--navy) 0%,#0f2a4a 100%);padding:60px 0">
+    <div class="container" style="text-align:center;max-width:560px">
+      <p class="section-label">Never Miss a Post</p>
+      <h2 style="color:var(--white);font-size:2rem;margin-bottom:12px">Get it in your inbox</h2>
+      <p style="color:rgba(255,255,255,0.6);margin-bottom:28px">Free, biweekly, unsubscribe any time.</p>
+      <form style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center" action="/#newsletter">
+        <input type="email" class="form-input" placeholder="Your email" style="flex:1;min-width:220px">
+        <button type="submit" class="btn btn-teal">Subscribe →</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0">
+        <a href="/">← Back to chadwadden.ca</a>
+        <span>© 2026 Chad Wadden</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
