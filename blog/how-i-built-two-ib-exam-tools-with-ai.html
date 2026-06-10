@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Built Two IB Exam Practice Tools Using AI — Chad Wadden</title>
+  <meta name="description" content="I'm not a developer. But this spring I shipped two working web apps for my IB Digital Society students using nothing but AI and a text editor. Here's exactly how it happened.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { padding-top: 68px; background: var(--cream); }
+
+    .post-hero {
+      background: linear-gradient(135deg, #0a1020 0%, #1a2a4a 60%, #1e4d8c 100%);
+      padding: 70px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('../images/chad-teachers.png') center/cover no-repeat;
+      opacity: 0.12;
+    }
+
+    .post-hero .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      color: var(--white);
+      max-width: 760px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-hero .post-deck {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 640px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-body-wrap { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+
+    .post-body h2 { font-family: var(--font-head); font-size: 1.7rem; color: var(--navy); margin: 48px 0 16px; }
+    .post-body h3 { font-family: var(--font-body); font-size: 1.1rem; font-weight: 700; color: var(--navy); margin: 32px 0 12px; }
+    .post-body p { font-size: 1.05rem; color: var(--gray-700); line-height: 1.8; margin-bottom: 20px; }
+    .post-body strong { color: var(--navy); font-weight: 700; }
+    .post-body ul, .post-body ol { padding-left: 24px; margin-bottom: 20px; }
+    .post-body li { font-size: 1.05rem; color: var(--gray-700); line-height: 1.75; margin-bottom: 8px; }
+
+    blockquote {
+      border-left: 4px solid var(--blue);
+      padding: 16px 24px;
+      margin: 32px 0;
+      background: rgba(30,77,140,0.06);
+      border-radius: 0 8px 8px 0;
+    }
+    blockquote p { font-family: var(--font-head); font-size: 1.2rem; color: var(--navy); margin: 0; font-style: italic; }
+
+    .tip-box {
+      background: rgba(14,165,160,0.08);
+      border: 1px solid rgba(14,165,160,0.3);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .tip-box h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .tip-box p, .tip-box li {
+      font-size: 1rem;
+      color: var(--gray-700);
+      line-height: 1.75;
+      margin-bottom: 6px;
+    }
+    .tip-box ul { padding-left: 20px; margin: 0; }
+
+    .app-preview {
+      background: var(--navy);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .app-preview h4 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      color: #E8B84B;
+      margin-bottom: 4px;
+    }
+    .app-preview p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .app-preview .feature-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .feature-chip {
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .numbered-tip {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+    .tip-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .tip-content h3 { margin-top: 0; margin-bottom: 8px; }
+    .tip-content p { margin-bottom: 0; }
+
+    .post-divider { height: 1px; background: var(--gray-100); margin: 40px 0; }
+    .post-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .post-tag-chip { padding: 6px 14px; background: var(--gray-100); border-radius: 100px; font-size: 0.8rem; font-weight: 600; color: var(--gray-700); }
+
+    .author-box { background: var(--white); border: 1px solid var(--gray-100); border-radius: 14px; padding: 28px; display: flex; align-items: center; gap: 20px; margin: 48px 0; }
+    .author-avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+    .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .author-box h4 { font-size: 0.95rem; color: var(--navy); margin-bottom: 4px; }
+    .author-box p { font-size: 0.85rem; color: var(--gray-500); margin: 0; line-height: 1.5; }
+
+    .post-nav { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; border-top: 1px solid var(--gray-100); gap: 20px; }
+    .post-nav a { font-size: 0.9rem; font-weight: 600; color: var(--blue); display: inline-flex; align-items: center; gap: 8px; }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-mark">CW</div>
+        <div class="logo-text">
+          <span class="name">Chad Wadden</span>
+          <span class="tagline-sm">Educator · Coach · Writer</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#pillars">Work</a></li>
+        <li><a href="/blog/" class="active">Writing</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/coaching/">Coaching</a></li>
+        <li><a href="/#about-strip">About</a></li>
+        <li><a href="mailto:chad@chadwadden.ca">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/#newsletter" class="btn btn-primary">Get the Newsletter →</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="post-hero">
+    <div class="container">
+      <div class="post-meta">
+        <span class="blog-tag" style="background:rgba(30,77,140,0.2);padding:5px 12px;border-radius:100px">AI in Education</span>
+        <span style="color:rgba(255,255,255,0.4);font-size:0.85rem">June 9, 2026 · 8 min read</span>
+      </div>
+      <h1>How I Built Two IB Exam Practice Tools Using AI</h1>
+      <p class="post-deck">I am not a developer. I teach high school. But this spring I shipped two fully functional web applications for my IB Digital Society students — using nothing but AI, a text editor, and a lot of precise prompting. Here's exactly what I did, what I learned, and what I'd tell any teacher thinking about doing the same.</p>
+    </div>
+  </div>
+
+  <div class="post-body-wrap">
+    <article class="post-body">
+
+      <p>
+        Let me be completely clear about my technical background before this post begins: I am not a programmer. I took one computer science class in 2003, I cannot write JavaScript from scratch, and until about eight months ago the words "CSS grid" meant nothing to me. I am a high school teacher who coaches basketball and runs a media program in Halifax.
+      </p>
+
+      <p>
+        That's context, not humility. Because what I built this spring should not have been possible for someone with my background — and the fact that it was possible is the actual point of this post.
+      </p>
+
+      <p>
+        My IB Digital Society students were preparing for their May exams. I wanted a self-assessment tool that worked the way I think about exam prep: structured steps, real rubric language, a place to plan before writing, and a way to annotate your own response to see what you've actually argued. Nothing like that existed. So I decided to build it.
+      </p>
+
+      <p>
+        I ended up building two.
+      </p>
+
+      <h2>What I Actually Built</h2>
+
+      <p>
+        The first tool — the one I started with — is called the <strong>IB DigSoc Exam Practice Studio</strong>. It's a single HTML file that runs entirely in the browser, no server needed. You select your paper type (Paper 1 or Paper 2) and the mark value of the question you're practicing. The app shows you the official IB rubric for that question type, a checklist of what a high-scoring response actually needs, an annotation system where you can stamp different parts of your written response with labels (DEF, EV, ARG+, ARG−, etc.), and a score estimator that updates as you tick off checklist items. When you're done, you can export the whole thing — your answer, your stamps, your checklist state — as a single file you can email to your teacher.
+      </p>
+
+      <div class="app-preview">
+        <h4>IB DigSoc Exam Practice Studio — What It Does</h4>
+        <p>Upload a PDF or photo of your written response. Annotate it with colour-coded stamps. Work through the official rubric. Get a provisional band estimate. Export everything to share with your teacher.</p>
+        <div class="feature-chips">
+          <span class="feature-chip">Paper 1 &amp; Paper 2</span>
+          <span class="feature-chip">Official IB rubric language</span>
+          <span class="feature-chip">Stamp annotations (DEF, EV, ARG+, etc.)</span>
+          <span class="feature-chip">Score estimator</span>
+          <span class="feature-chip">PDF + image upload</span>
+          <span class="feature-chip">Offline export</span>
+        </div>
+      </div>
+
+      <p>
+        The second tool — which I built after the first one and is considerably more complex — is the <strong>DigSoc Response Studio</strong>. This one walks students through a seven-step process: understand the question, think like a high-scoring student, brainstorm before writing, write the full response, annotate it with inline text highlights, self-assess against the rubric, and then generate a tailored AI feedback prompt they can paste into Claude or ChatGPT. It covers every question type across Paper 1 and Paper 2, with specific rubric logic, checklists, and exemplar guidance for each. It also has a demo mode that loads a full worked example — a real IB-style question on Instagram and social class — with a complete model response, annotations already placed, and a checklist that shows exactly why the response hits the top band.
+      </p>
+
+      <div class="app-preview">
+        <h4>DigSoc Response Studio — What It Does</h4>
+        <p>A guided 7-step simulator covering every Paper 1 and Paper 2 question type. Brainstorm scaffold, inline annotation, rubric self-assessment, score estimate with hard caps, and a copy-ready AI feedback prompt.</p>
+        <div class="feature-chips">
+          <span class="feature-chip">7-step guided workflow</span>
+          <span class="feature-chip">All 8 question types</span>
+          <span class="feature-chip">Inline text highlighting</span>
+          <span class="feature-chip">Hard cap scoring logic</span>
+          <span class="feature-chip">AI feedback prompt generator</span>
+          <span class="feature-chip">Worked example demo</span>
+          <span class="feature-chip">Local autosave</span>
+          <span class="feature-chip">JSON import/export</span>
+        </div>
+      </div>
+
+      <p>
+        Both tools run entirely in the browser as single HTML files. No login, no server, no subscription, no data sent anywhere. A student can open one on a Chromebook in a school with no internet and it still works. That was non-negotiable for me.
+      </p>
+
+      <h2>How It Actually Gets Built: The Process</h2>
+
+      <p>
+        This is what most posts about "vibe coding" skip. They say "I just chatted with AI and it wrote the code!" as if the hard part is typing. The hard part is not typing. The hard part is knowing what to ask for and knowing when to push back.
+      </p>
+
+      <p>
+        Here's the actual process I used, which you could replicate for almost any kind of tool you want to build as an educator:
+      </p>
+
+      <h3>Start with the problem, not the feature list</h3>
+
+      <p>
+        My first prompt was not "build me an IB exam tool." My first prompt was something closer to: "My IB Digital Society students consistently get to an exam and don't know the difference between describing something and analysing it. They write, they self-assess that it's good, and they're wrong. What's the root problem here and what would a tool need to do to fix it?"
+      </p>
+
+      <p>
+        That conversation — not a coding session, just a thinking session — produced the architecture. The tool needed: step-based flow so students can't skip the thinking phase, specific rubric language from the actual markbands, a way to visually locate where in their writing the evidence actually is, and a score that feels real because it's driven by the rubric, not vibes. Everything after that was building toward those four things.
+      </p>
+
+      <h3>Build the content before you build the code</h3>
+
+      <p>
+        The rubric data — the official markband language for each of the eight question types, the non-negotiables, the examiner tips, the things weak students do versus what strong students do — I drafted all of that in a document first. I knew the subject. I could look at my IB resources and write those tables. Once that content existed, asking the AI to turn it into a working application was a much simpler conversation than asking it to invent both at once.
+      </p>
+
+      <p>
+        This is something I'd tell any teacher trying this: <strong>you have domain knowledge that the AI doesn't have.</strong> You know what your students get wrong. You know what the rubric is actually asking for. You know what a good response looks like versus a mediocre one. That expertise is the most valuable thing in the room. The AI is the implementation layer, not the expertise layer.
+      </p>
+
+      <h3>Describe behavior, not syntax</h3>
+
+      <p>
+        I cannot tell an AI to "add an event listener to the textarea that fires a debounced save to localStorage." I don't know those words. What I can say is: "When a student types in the brainstorm field, their work should save automatically — they should never lose their text if the tab closes." The AI translates that into code. My job is to describe the behavior with enough precision that the translation is accurate.
+      </p>
+
+      <blockquote>
+        <p>You don't need to know how to code. You need to know how to describe what you want with precision. Those are very different skills, and you probably already have the second one.</p>
+      </blockquote>
+
+      <p>
+        Precision matters a lot. "Make it look better" gets you nothing useful. "The score estimate should update immediately when a checkbox is ticked — not on page load, not on submit — instantly" gets you what you want.
+      </p>
+
+      <h2>8 Vibe Coding Tips That Actually Matter in June 2026</h2>
+
+      <p>
+        A lot of what's written about AI-assisted coding is either breathlessly optimistic or uselessly vague. Here's what I actually found useful across the process of building these two tools:
+      </p>
+
+      <div class="numbered-tip">
+        <div class="tip-num">1</div>
+        <div class="tip-content">
+          <h3>One file as long as possible</h3>
+          <p>Both tools are single HTML files. CSS, JavaScript, data — all inline. This is not best practice for production software. It is excellent practice for a teacher building tools for students. No build process, no dependencies, no "npm install", no deployment infrastructure. You open the file in a browser and it works. Keep it in one file for as long as you possibly can. The complexity cost of splitting files into modules is real, and you will pay it before you understand what you're managing.</p>
+        </div>
+      </div>
+
+      <div class="numbered-tip">
+        <div class="tip-num">2</div>
+        <div class="tip-content">
+          <h3>CSS variables are your design system</h3>
+          <p>Before you write a single UI element, define your colour palette and font stack as CSS custom properties at the top of your file. Something like <code>--navy: #0d1b2e; --teal: #0ea5a0; --gold: #E8B84B</code>. Then use those variable names everywhere instead of hex codes. When you ask the AI to "make the checklist items look checked when ticked," it can use your variable names and the output is instantly consistent. This saved me hours of "why does that green not match."</p>
+        </div>
+      </div>
+
+      <div class="numbered-tip">
+        <div class="tip-num">3</div>
+        <div class="tip-content">
+          <h3>Tell the AI what constraints matter to you</h3>
+          <p>Every time I started a new feature, I led with my non-negotiables: no external dependencies, works offline, no data sent to any server, functions on a Chromebook. The AI made different choices when it knew those constraints existed. Without them, it would sometimes suggest fetching data from an API, using a framework, or requiring an internet connection. Constraints are not limitations — they're a specification.</p>
+        </div>
+      </div>
+
+      <div class="numbered-tip">
+        <div class="tip-num">4</div>
+        <div class="tip-content">
+          <h3>Version as you go — even casually</h3>
+          <p>I am not a git user. But I learned very quickly to Save As "tool-v2.html", "tool-v3.html" before any significant change. Three times, a new feature broke something I didn't notice until ten minutes of new code later. Being able to open the previous version side-by-side and compare was the only way to recover cleanly. If you know git, use it. If you don't, just make numbered copies before big changes.</p>
+        </div>
+      </div>
+
+      <div class="numbered-tip">
+        <div class="tip-num">5</div>
+        <div class="tip-content">
+          <h3>Ask the AI to explain before it codes</h3>
+          <p>Before I asked for any non-trivial feature, I asked: "Before you write any code, explain in plain language how you would approach this." That explanation gave me two things: a chance to correct the approach before it was embedded in a hundred lines of code, and enough understanding of the plan to catch it when the implementation drifted from what I'd asked for. This one habit saved me more time than any other.</p>
+        </div>
+      </div>
+
+      <div class="numbered-tip">
+        <div class="tip-num">6</div>
+        <div class="tip-content">
+          <h3>The AI will write confident, working code for the wrong problem</h3>
+          <p>This is the most important failure mode to understand. The AI is very good at writing correct code. It is not always good at writing code for what you actually need. I asked for a "score estimator" and got one that worked perfectly — but it calculated the score on page load, not when checkboxes were ticked. Technically correct, practically useless. Read the output. Run it. Check whether it does what you meant, not just what you typed.</p>
+        </div>
+      </div>
+
+      <div class="numbered-tip">
+        <div class="tip-num">7</div>
+        <div class="tip-content">
+          <h3>Keep your data separate from your UI logic</h3>
+          <p>In both my tools, the rubric content — the band descriptors, the checklists, the examiner tips — lives in a JavaScript data object at the top of the file, completely separate from the rendering functions. This was the AI's suggestion, and it was the right one. When I needed to update a rubric item, I changed one line of data. When I needed to add a new question type, I added one object. The UI didn't need to change. Separating your content from your presentation is the most practical architectural decision you can make for a tool like this.</p>
+        </div>
+      </div>
+
+      <div class="numbered-tip">
+        <div class="tip-num">8</div>
+        <div class="tip-content">
+          <h3>Ship something small, then make it better</h3>
+          <p>The first version of the Practice Studio had three features: upload a file, place stamps, see the rubric. That was it. I used it with students for a week before adding the score tab. I used it for two more weeks before building the export. Each addition was informed by what students actually got confused about. If I had tried to build everything before anyone used it, I would have built a lot of wrong things very carefully. Start smaller than you think you need to.</p>
+        </div>
+      </div>
+
+      <h2>What Surprised Me About the Process</h2>
+
+      <p>
+        I expected the hardest part to be the code. It wasn't. The hardest part was writing the content — the rubric language, the examiner tips, the checklist items that are specific enough to be genuinely useful but general enough to apply to any question in the paper. That took domain knowledge, experience with where my students struggle, and careful thinking about what the IB is actually trying to assess at each mark level. The AI helped me refine the language, but the substance came from me.
+      </p>
+
+      <p>
+        The other thing that surprised me was how much I enjoyed the process of building. I've never thought of myself as someone who makes software. But there's something satisfying about describing a problem clearly and watching a working solution appear — especially when you can open it, hand it to a student the next morning, and see them actually use it.
+      </p>
+
+      <p>
+        The annotation feature in the Response Studio — where students highlight text in their own response and tag it with a stamp — took about twenty minutes of back-and-forth to get right. The export system that embeds everything into a self-contained HTML file took an afternoon. Neither of those things would have been possible for me without AI. Both of them are now genuinely useful in my classroom.
+      </p>
+
+      <h2>What It Means for Teachers</h2>
+
+      <p>
+        I want to be careful not to oversell this. These tools work for my students because I understand my students, my subject, and the exam they're preparing for. An AI could not have built them without me. But I also could not have built them without the AI.
+      </p>
+
+      <p>
+        What's changed is not that coding is easy now. What's changed is that the implementation gap — the distance between "I know what this tool should do" and "this tool exists" — has shrunk dramatically for people who have subject expertise but not technical expertise. That's most teachers. That's almost all of us.
+      </p>
+
+      <p>
+        The skills that matter now are: being able to describe what you want with precision, knowing your subject deeply enough to build something that's actually useful, and being willing to iterate — to use the tool with students, see where it fails, and make it better. Those are things teachers already know how to do. The AI handles the rest.
+      </p>
+
+      <p>
+        If you've been sitting on an idea for a tool, a resource, a practice simulator, a self-assessment rubric, or anything else that would help your students — now is actually the time to build it.
+      </p>
+
+      <div class="post-divider"></div>
+
+      <div class="tip-box">
+        <h4>Want to try the tools?</h4>
+        <p>Both the IB DigSoc Exam Practice Studio and the DigSoc Response Studio are available as free downloads. They work offline as single HTML files — no login, no account, no data collection. Email me at <a href="mailto:chad@chadwadden.ca" style="color:var(--teal)">chad@chadwadden.ca</a> and I'll send them along. If you're an IB Digital Society teacher and want to adapt them for your context, I'm happy to talk through how.</p>
+      </div>
+
+      <div class="post-divider"></div>
+
+      <div class="post-tags">
+        <span class="post-tag-chip">AI in Education</span>
+        <span class="post-tag-chip">Vibe Coding</span>
+        <span class="post-tag-chip">IB Digital Society</span>
+        <span class="post-tag-chip">Teacher Tools</span>
+        <span class="post-tag-chip">Exam Prep</span>
+      </div>
+
+      <div class="author-box">
+        <div class="author-avatar">
+          <img src="../images/chad-wadden-bw.PNG" alt="Chad Wadden">
+        </div>
+        <div>
+          <h4>Chad Wadden</h4>
+          <p>Teacher, department head, and basketball coach in Halifax, NS. Writing about education, technology, and performance every two weeks.</p>
+        </div>
+      </div>
+
+      <div class="post-nav">
+        <a href="index.html">← All Writing</a>
+        <a href="ai-in-education-honest-take.html">Next: AI in Education →</a>
+      </div>
+
+    </article>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
