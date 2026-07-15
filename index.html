@@ -157,29 +157,39 @@
         <!-- the Bluenose — a nod to home, position driven by scroll progress via CSS var --p -->
         <g class="scene-ship">
           <g class="scene-ship-tilt">
+            <!-- wake -->
+            <ellipse cx="-6" cy="26" rx="58" ry="6" fill="#dfe9ff" opacity="0.12"/>
             <!-- hull -->
-            <path d="M -42 10 Q 0 26 42 10 L 32 23 L -32 23 Z" fill="#1c1f24"/>
-            <path d="M -42 10 Q 0 26 42 10 L 40 14 Q 0 20 -40 14 Z" fill="#8b0000"/>
+            <path d="M -66 14 Q -68 26 -50 30 L 44 30 Q 60 26 56 12 Q 20 22 -10 22 Q -42 22 -66 14 Z" fill="#15181c"/>
+            <path d="M -60 15 Q -20 21 20 21 Q 42 21 54 14 L 52 19 Q 20 25 -12 25 Q -40 25 -58 19 Z" fill="#a52a1e"/>
+            <path d="M -66 14 Q -30 20 10 20 Q 36 20 56 12 L 56 15 Q 34 23 8 23 Q -32 23 -66 17 Z" fill="#e8e2d0" opacity="0.9"/>
             <!-- bowsprit -->
-            <line x1="-42" y1="7" x2="-62" y2="-1" stroke="#4a3826" stroke-width="3" stroke-linecap="round"/>
-            <!-- masts -->
-            <rect x="-17" y="-40" width="3" height="50" fill="#4a3826"/>
-            <rect x="11" y="-54" width="3" height="64" fill="#4a3826"/>
-            <!-- jib -->
-            <path d="M -62 -1 L -15.5 -37 L -15.5 8 Z" fill="#f5f2ea"/>
-            <!-- foresail -->
-            <path d="M -15.5 -36 L 12.5 -50 L 12.5 6 L -15.5 6 Z" fill="#ffffff"/>
-            <!-- mainsail -->
-            <path d="M 12.5 -50 L 38 -18 L 12.5 6 Z" fill="#eef0f2"/>
+            <path d="M -66 10 L -92 -2" stroke="#3d2e1f" stroke-width="3.4" stroke-linecap="round"/>
+            <!-- foremast -->
+            <path d="M -30 8 L -38 -66" stroke="#3d2e1f" stroke-width="3.2" stroke-linecap="round"/>
+            <!-- mainmast -->
+            <path d="M 14 8 L 8 -86" stroke="#3d2e1f" stroke-width="3.4" stroke-linecap="round"/>
+            <!-- pennant -->
+            <path d="M 8 -86 L 24 -80 L 8 -74 Z" fill="#c0392b"/>
+            <!-- jib (bowsprit to foremast) -->
+            <path d="M -92 -2 Q -60 -34 -37 -62 Q -42 -30 -34 6 Z" fill="#f7f4ec"/>
+            <path d="M -92 -2 Q -60 -34 -37 -62 L -50 -40 Q -66 -20 -92 -2 Z" fill="#ffffff" opacity="0.55"/>
+            <!-- foresail (gaff-rigged, foremast to mainmast) -->
+            <path d="M -37 -60 Q -14 -68 9 -72 L 12 4 Q -12 10 -35 6 Z" fill="#ffffff"/>
+            <path d="M -37 -60 Q -22 -64 -8 -66 L -6 0 Q -22 4 -35 2 Z" fill="#e9e6dc" opacity="0.7"/>
+            <!-- mainsail (mainmast aft) -->
+            <path d="M 9 -80 Q 34 -60 46 -22 Q 30 -6 12 2 L 9 -74 Z" fill="#f2efe6"/>
+            <path d="M 9 -80 Q 24 -62 34 -30 L 12 -30 Z" fill="#ffffff" opacity="0.5"/>
           </g>
         </g>
 
         <!-- shark fin: peeks out while the water's still rough -->
         <g class="scene-shark-wrap">
           <g class="scene-shark" transform="translate(430,632)">
-            <ellipse cx="2" cy="5" rx="20" ry="3.5" fill="#dfe9ff" opacity="0.2"/>
-            <path d="M -7,6 Q -8,-9 3,-28 Q 13,-16 9,6 Z" fill="#7c8e9c" stroke="#aebbc4" stroke-width="1.1"/>
-            <path d="M -7,6 Q -8,-9 3,-28 Q -1,-16 -2,6 Z" fill="#5c6b76"/>
+            <ellipse cx="10" cy="9" rx="26" ry="4.5" fill="#dfe9ff" opacity="0.16"/>
+            <path d="M -13,9 C -13,-8 -6,-24 7,-40 C 13,-27 16,-14 22,9 C 10,14 -3,14 -13,9 Z" fill="#2c3a44"/>
+            <path d="M -13,9 C -13,-8 -6,-24 7,-40 C 4,-24 3,-8 1,9 Z" fill="#4d616e"/>
+            <path d="M 5,-37 C 8,-27 10,-16 12,-3" stroke="#7a8e9a" stroke-width="1" opacity="0.6" fill="none"/>
           </g>
         </g>
 
