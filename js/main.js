@@ -15,6 +15,37 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+// --- Hero scene: storm clears and ship reaches the lighthouse as you scroll ---
+const heroEl = document.getElementById('hero');
+if (heroEl) {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking = false;
+
+  function updateHeroScene() {
+    ticking = false;
+    const rect = heroEl.getBoundingClientRect();
+    // The scene occupies a fixed 100vh band regardless of how tall the hero
+    // grows on small screens (stacked cards push its actual height well past 100vh).
+    const heroHeight = Math.min(rect.height || window.innerHeight, window.innerHeight);
+    const scrolled = Math.min(Math.max(-rect.top, 0), heroHeight);
+    const progress = heroHeight ? scrolled / (heroHeight * 0.85) : 0;
+    heroEl.style.setProperty('--p', Math.min(Math.max(progress, 0), 1).toFixed(3));
+  }
+
+  updateHeroScene();
+  if (reduceMotion) {
+    heroEl.style.setProperty('--p', 1);
+  } else {
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateHeroScene);
+      }
+    }, { passive: true });
+    window.addEventListener('resize', updateHeroScene);
+  }
+}
+
 // --- Navbar scroll effect ---
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
