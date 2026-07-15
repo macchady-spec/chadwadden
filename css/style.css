@@ -316,21 +316,6 @@ section { padding: 80px 0; }
   50%      { transform: rotate(6deg) translateY(-4px); }
 }
 
-/* shark fin: an occasional wink at rough water, fades away as the storm clears */
-.scene-shark-wrap {
-  opacity: calc(1 - var(--p));
-  transition: opacity 0.2s linear;
-}
-.scene-shark {
-  animation: shark-peek 17s ease-in-out infinite;
-}
-@keyframes shark-peek {
-  0%, 82%, 100% { opacity: 0; transform: translate(430px, 638px); }
-  87%           { opacity: 1; transform: translate(430px, 630px); }
-  92%           { opacity: 1; transform: translate(444px, 630px); }
-  97%           { opacity: 0; transform: translate(454px, 638px); }
-}
-
 /* lobster: pops up for a look once the water settles */
 .scene-lobster-wrap {
   opacity: var(--p);
