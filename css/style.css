@@ -307,6 +307,16 @@ section { padding: 80px 0; }
     scale(calc(0.55 + var(--p) * 0.35));
   transition: transform 0.25s ease-out;
 }
+/* continuous voyage: the schooner crosses the whole scene on a loop,
+   layered on top of the storm/calm position from --p */
+.scene-ship-sail {
+  animation: ship-sail 28s linear infinite;
+}
+@keyframes ship-sail {
+  0%   { transform: translateX(-1000px); }
+  100% { transform: translateX(700px); }
+}
+
 .scene-ship-tilt {
   transform-origin: 0px 10px;
   animation: ship-rock 3.4s ease-in-out infinite;
