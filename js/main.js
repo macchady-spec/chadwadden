@@ -82,6 +82,8 @@ const hamburger = document.getElementById('hamburger');
 const navLinksEl = document.querySelector('.nav-links');
 const navCtaEl   = document.querySelector('.nav-cta');
 
+hamburger?.setAttribute('aria-expanded', 'false');
+
 hamburger?.addEventListener('click', () => {
   const open = navLinksEl.style.display === 'flex';
 
@@ -89,6 +91,7 @@ hamburger?.addEventListener('click', () => {
     navLinksEl.style.display = '';
     navCtaEl.style.display   = '';
     hamburger.style.transform = '';
+    hamburger.setAttribute('aria-expanded', 'false');
   } else {
     // Mobile: show nav vertically
     navLinksEl.style.cssText = `
@@ -113,6 +116,7 @@ hamburger?.addEventListener('click', () => {
       z-index: 999;
     `;
     hamburger.style.transform = 'rotate(90deg)';
+    hamburger.setAttribute('aria-expanded', 'true');
   }
 });
 
@@ -122,19 +126,12 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     if (window.innerWidth < 1024) {
       navLinksEl.style.display   = '';
       navCtaEl.style.display     = '';
-      if (hamburger) hamburger.style.transform = '';
+      if (hamburger) {
+        hamburger.style.transform = '';
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
     }
   });
-});
-
-// --- Newsletter form (placeholder — replace with Kit embed) ---
-document.getElementById('newsletter-form')?.addEventListener('submit', e => {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  btn.textContent = '✓ You\'re on the list!';
-  btn.style.background = 'var(--teal)';
-  btn.disabled = true;
-  // TODO: Replace with Kit (ConvertKit) form action URL
 });
 
 // --- Smooth scroll for anchor links ---
@@ -147,3 +144,89 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// Kit injects its form asynchronously. Correct the current published headline
+// typo without changing future copy if the form is fixed at the source.
+const normalizeKitFormCopy = () => {
+  document.querySelectorAll('form[data-uid="70f50cb4b3"] .formkit-header h2').forEach(heading => {
+    if (heading.textContent.trim().toLowerCase() === "join the the teacher's ai toolkit") {
+      heading.textContent = "Join the Teacher's AI Toolkit";
+    }
+  });
+};
+
+normalizeKitFormCopy();
+const kitFormObserver = new MutationObserver(normalizeKitFormCopy);
+kitFormObserver.observe(document.body, { childList: true, subtree: true });
+
+// Blog category filters are deliberately small and client-side: four real
+// articles do not need a heavier content system.
+const blogFilterButtons = document.querySelectorAll('[data-filter]');
+const blogPosts = document.querySelectorAll('.blog-list [data-category]');
+
+blogFilterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const selected = button.dataset.filter;
+
+    blogFilterButtons.forEach(candidate => {
+      const active = candidate === button;
+      candidate.classList.toggle('active', active);
+      candidate.setAttribute('aria-pressed', String(active));
+    });
+
+    blogPosts.forEach(post => {
+      post.hidden = selected !== 'all' && post.dataset.category !== selected;
+    });
+  });
+});
+
+// Application screenshots open in a keyboard-accessible, dismissible lightbox.
+// The original image remains a normal page asset; this only enlarges it for inspection.
+const lightboxTriggers = document.querySelectorAll('[data-lightbox]');
+
+if (lightboxTriggers.length) {
+  const lightbox = document.createElement('div');
+  lightbox.className = 'image-lightbox';
+  lightbox.hidden = true;
+  lightbox.innerHTML = `
+    <div class="image-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Enlarged application image">
+      <button class="image-lightbox-close" type="button" aria-label="Close enlarged image">×</button>
+      <img alt="">
+      <p class="image-lightbox-caption"></p>
+    </div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const enlargedImage = lightbox.querySelector('img');
+  const caption = lightbox.querySelector('.image-lightbox-caption');
+  const closeButton = lightbox.querySelector('.image-lightbox-close');
+  let lastTrigger = null;
+
+  const closeLightbox = () => {
+    lightbox.hidden = true;
+    document.body.classList.remove('lightbox-open');
+    enlargedImage.removeAttribute('src');
+    lastTrigger?.focus();
+  };
+
+  lightboxTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const previewImage = trigger.querySelector('img');
+      lastTrigger = trigger;
+      enlargedImage.src = trigger.dataset.fullsrc || previewImage?.src || '';
+      enlargedImage.alt = previewImage?.alt || 'Enlarged application image';
+      caption.textContent = trigger.dataset.caption || '';
+      lightbox.hidden = false;
+      document.body.classList.add('lightbox-open');
+      closeButton.focus();
+    });
+  });
+
+  closeButton.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', event => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !lightbox.hidden) closeLightbox();
+  });
+}

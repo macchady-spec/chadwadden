@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How I Built Two IB Exam Practice Tools Using AI — Chad Wadden</title>
-  <meta name="description" content="I'm not a developer. But this spring I shipped two working web apps for my IB Digital Society students using nothing but AI and a text editor. Here's exactly how it happened.">
+  <title>AI Should Help Students TRACE Their Thinking, Not Erase It — Chad Wadden</title>
+  <meta name="description" content="How AI helped me build two browser-based IB exam-practice tools while keeping student thinking, assessment, and revision human.">
     <link rel="canonical" href="https://chadwadden.ca/blog/how-i-built-two-ib-exam-tools-with-ai.html">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="How I Built Two IB Exam Practice Tools Using AI — Chad Wadden">
-  <meta property="og:description" content="I'm not a developer. But this spring I shipped two working web apps for my IB Digital Society students using nothing but AI and a text editor. Here's exactly how it happened.">
+  <meta property="og:title" content="AI Should Help Students TRACE Their Thinking, Not Erase It — Chad Wadden">
+  <meta property="og:description" content="How AI helped me build two browser-based IB exam-practice tools while keeping student thinking, assessment, and revision human.">
   <meta property="og:url" content="https://chadwadden.ca/blog/how-i-built-two-ib-exam-tools-with-ai.html">
-  <meta property="og:image" content="https://chadwadden.ca/images/screenshotib.png">
+  <meta property="og:image" content="https://chadwadden.ca/images/trace-instagram-cover-v2.png">
   <meta property="og:site_name" content="Chad Wadden">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How I Built Two IB Exam Practice Tools Using AI — Chad Wadden">
-  <meta name="twitter:description" content="I'm not a developer. But this spring I shipped two working web apps for my IB Digital Society students using nothing but AI and a text editor. Here's exactly how it happened.">
-  <meta name="twitter:image" content="https://chadwadden.ca/images/screenshotib.png">
+  <meta name="twitter:title" content="AI Should Help Students TRACE Their Thinking, Not Erase It — Chad Wadden">
+  <meta name="twitter:description" content="How AI helped me build two browser-based IB exam-practice tools while keeping student thinking, assessment, and revision human.">
+  <meta name="twitter:image" content="https://chadwadden.ca/images/trace-instagram-cover-v2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -216,6 +216,42 @@
 
     .post-nav { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; border-top: 1px solid var(--gray-100); gap: 20px; }
     .post-nav a { font-size: 0.9rem; font-weight: 600; color: var(--blue); display: inline-flex; align-items: center; gap: 8px; }
+
+    /* TRACE article styles */
+    .post-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+    .post-body pre { overflow-x: auto; background: #0a1020; color: #eef7f6; border-radius: 12px; padding: 22px; margin: 28px 0; font-size: 0.86rem; line-height: 1.65; }
+    .post-body code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .post-body p code, .post-body li code { background: rgba(30,77,140,0.08); border-radius: 4px; padding: 2px 5px; color: var(--navy); }
+    .section-kicker { color: var(--teal) !important; font-size: 0.78rem !important; font-weight: 800; letter-spacing: 0.14em; margin-bottom: 8px !important; }
+    .campaign-visual { margin: 32px 0 40px; border-radius: 14px; overflow: hidden; background: var(--white); border: 1px solid var(--gray-100); box-shadow: 0 16px 48px rgba(13,27,46,0.12); }
+    .campaign-visual img, .campaign-visual video { display: block; width: 100%; height: auto; }
+    .campaign-visual figcaption, .evidence-gallery figcaption { padding: 12px 16px; background: #0a1020; color: rgba(255,255,255,0.72); font-size: 0.8rem; line-height: 1.5; }
+    .evidence-gallery { margin: 52px 0; padding-top: 8px; }
+    .evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+    .evidence-grid figure { margin: 0; border: 1px solid var(--gray-100); border-radius: 12px; overflow: hidden; background: var(--white); box-shadow: 0 8px 26px rgba(13,27,46,0.09); }
+    .evidence-grid img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
+    .role-clarifier { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+    .role-clarifier > div { padding: 22px; border-radius: 12px; background: var(--white); border: 1px solid var(--gray-100); }
+    .role-clarifier h3 { margin: 0 0 8px; color: var(--teal); }
+    .role-clarifier p { margin: 0; font-size: 0.95rem; }
+    .live-tool-card { margin: 30px 0; padding: 26px; border-radius: 14px; background: linear-gradient(135deg,#0d1b2e,#163c59); color: var(--white); }
+    .live-tool-card h3 { margin: 0 0 8px; color: var(--white); font-size: 1.25rem; }
+    .live-tool-card p { color: rgba(255,255,255,0.72); margin-bottom: 18px; }
+    .live-tool-card .btn { text-decoration: none; color: var(--white); }
+    .lightbox-trigger { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; text-align: inherit; }
+    .lightbox-trigger:focus-visible { outline: 4px solid var(--teal); outline-offset: -4px; }
+    .lightbox-trigger img { display: block; width: 100%; }
+    .research-notes { margin: 34px 0; padding: 20px 22px; border: 1px solid var(--gray-100); border-radius: 12px; background: var(--white); }
+    .research-notes summary { cursor: pointer; color: var(--navy); font-weight: 700; }
+    .research-notes[open] summary { margin-bottom: 18px; }
+    body.lightbox-open { overflow: hidden; }
+    .image-lightbox[hidden] { display: none; }
+    .image-lightbox { position: fixed; inset: 0; z-index: 2000; display: grid; place-items: center; padding: 28px; background: rgba(4,10,20,0.94); }
+    .image-lightbox-dialog { position: relative; width: min(1180px, 96vw); max-height: 94vh; display: flex; flex-direction: column; align-items: center; }
+    .image-lightbox img { max-width: 100%; max-height: 82vh; object-fit: contain; border-radius: 8px; background: var(--white); }
+    .image-lightbox-caption { color: rgba(255,255,255,0.8); margin: 12px 52px 0; text-align: center; }
+    .image-lightbox-close { position: absolute; top: -18px; right: -18px; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; background: var(--navy); color: var(--white); font-size: 1.6rem; cursor: pointer; }
+    @media (max-width: 680px) { .evidence-grid, .role-clarifier { grid-template-columns: 1fr; } .post-body-wrap { padding-left: 18px; padding-right: 18px; } .image-lightbox { padding: 14px; } .image-lightbox-close { top: 6px; right: 6px; } }
   </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JR7LL2L3DE"></script>
@@ -234,7 +270,7 @@
         <div class="logo-mark">CW</div>
         <div class="logo-text">
           <span class="name">Chad Wadden</span>
-          <span class="tagline-sm">Educator · Coach · Writer</span>
+          <span class="tagline-sm">Teacher · Builder · Writer</span>
         </div>
       </a>
       <ul class="nav-links">
@@ -246,281 +282,194 @@
         <li><a href="mailto:chad.aigroove@gmail.com">Contact</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="https://chad-wadden.kit.com/608f830f78" class="btn btn-primary">Get the Newsletter →</a>
+        <a href="#newsletter-signup" class="btn btn-primary">Get the Newsletter →</a>
       </div>
-      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
   <div class="post-hero">
     <div class="container">
       <div class="post-meta">
-        <span class="blog-tag" style="background:rgba(30,77,140,0.2);padding:5px 12px;border-radius:100px">AI in Education</span>
-        <span style="color:rgba(255,255,255,0.4);font-size:0.85rem">June 9, 2026 · 8 min read</span>
+        <span class="blog-tag" style="background:rgba(14,165,160,0.22);padding:5px 12px;border-radius:100px">AI in Education</span>
+        <span style="color:rgba(255,255,255,0.55);font-size:0.85rem">August 11, 2026 · 12 min read</span>
       </div>
-      <h1>How I Built Two IB Exam Practice Tools Using AI</h1>
-      <p class="post-deck">I am not a developer. I teach high school. But this spring I shipped two fully functional web applications for my IB Digital Society students — using nothing but AI, a text editor, and a lot of precise prompting. Here's exactly what I did, what I learned, and what I'd tell any teacher thinking about doing the same.</p>
+      <h1>AI Should Help Students TRACE Their Thinking, Not Erase It</h1>
+      <p class="post-deck">How AI helped me build two browser-based IB exam-practice tools—without running them or doing the thinking for students.</p>
     </div>
   </div>
 
   <div class="post-body-wrap">
-    <article class="post-body">
+            <article class="post-body">
+      <p>I built two tools for IB Digital Society exam practice. AI helped me make them. <strong>AI does not run them.</strong></p>
+      <p>The deployed application is a regular browser-based tool. It does not send a student's response to an AI model, generate a mark, or produce live AI feedback. AI supported my planning, coding, debugging, visual design, and iteration. It helped with the making, not the running.</p>
+      <p>The interesting part is what students still have to do themselves.</p>
+      <p>They have to retrieve what they know. They have to explain it. They have to compare their work with criteria. Then they have to decide what needs revision.</p>
+      <p>That distinction shaped both tools: the technology can organize the practice, but it should not quietly take over the thinking or pretend to be an examiner.</p>
+      <p>Put more simply: <strong>AI should help students TRACE their thinking, not erase it.</strong></p>
+      <p>It also saved me from building a very polished answer machine, which would have been impressive for approximately seven minutes.</p>
+      <p>I should also be clear about where I am coming from. I am a computer science teacher. I know enough about coding to inspect what an agent produces, follow the logic, spot when something smells wrong, and occasionally create an entirely new smell of my own.</p>
+      <p>I did not arrive at these tools as a non-technical observer asking AI to “make me an app.” I built them while the way we work with AI was changing underneath us.</p>
 
-      <p>
-        Let me be completely clear about my technical background before this post begins: I am not a programmer. I took one computer science class in 2003, I cannot write JavaScript from scratch, and until about eight months ago the words "CSS grid" meant nothing to me. I am a high school teacher who coaches basketball and runs a media program in Halifax.
-      </p>
-
-      <p>
-        That's context, not humility. Because what I built this spring should not have been possible for someone with my background — and the fact that it was possible is the actual point of this post.
-      </p>
-
-      <p>
-        My IB Digital Society students were preparing for their May exams. I wanted a self-assessment tool that worked the way I think about exam prep: structured steps, real rubric language, a place to plan before writing, and a way to annotate your own response to see what you've actually argued. Nothing like that existed. So I decided to build it.
-      </p>
-
-      <p>
-        I ended up building two.
-      </p>
-
-      <h2>What I Actually Built</h2>
-
-      <p>
-        The first tool — the one I started with — is called the <strong>IB DigSoc Exam Practice Studio</strong>. It's a single HTML file that runs entirely in the browser, no server needed. You select your paper type (Paper 1 or Paper 2) and the mark value of the question you're practicing. The app shows you the official IB rubric for that question type, a checklist of what a high-scoring response actually needs, an annotation system where you can stamp different parts of your written response with labels (DEF, EV, ARG+, ARG−, etc.), and a score estimator that updates as you tick off checklist items. When you're done, you can export the whole thing — your answer, your stamps, your checklist state — as a single file you can email to your teacher.
-      </p>
-
-      <div class="app-preview">
-        <h4>IB DigSoc Exam Practice Studio — What It Does</h4>
-        <p>Upload a PDF or photo of your written response. Annotate it with colour-coded stamps. Work through the official rubric. Get a provisional band estimate. Export everything to share with your teacher.</p>
-        <div class="feature-chips">
-          <span class="feature-chip">Paper 1 &amp; Paper 2</span>
-          <span class="feature-chip">Official IB rubric language</span>
-          <span class="feature-chip">Stamp annotations (DEF, EV, ARG+, etc.)</span>
-          <span class="feature-chip">Score estimator</span>
-          <span class="feature-chip">PDF + image upload</span>
-          <span class="feature-chip">Offline export</span>
-        </div>
-        <a href="https://macchady-spec.github.io/ib_paperPractice/ibdsdiag.html" target="_blank" rel="noopener" class="live-link">
-          ↗ Try it live
-        </a>
+      <div class="role-clarifier" aria-label="What AI did and what the live tool does">
+        <div><h3>What AI helped me do</h3><p>Plan features, write and review code, debug problems, refine copy, and iterate on the design.</p></div>
+        <div><h3>What the live tool does</h3><p>Shows the task, response, rubric, movable annotations, and checklist so students can inspect their own work.</p></div>
       </div>
 
-      <figure class="app-screenshot">
-        <img src="../images/screenshotib.png" alt="IB DigSoc Exam Practice Studio — rubric panel, stamp annotations, and score estimator" onerror="this.closest('figure').style.display='none'">
-        <figcaption>The Exam Practice Studio: select your paper type, upload your response, stamp-annotate it, and work through the official rubric to estimate your band.</figcaption>
+      <h2>Prompting stopped being a magic sentence</h2>
+      <p>The early version of prompting often felt like trying to discover the perfect combination of words. Add a role. Add five adjectives. Tell the model to breathe deeply. Hope it becomes a different machine.</p>
+      <p>That is not how I think about prompting now.</p>
+      <p>Structured frameworks such as <strong>CRAFT</strong>—Context, Role, Audience, Format, and Tone—are useful starting points. But once an agent can inspect files, use tools, run checks, and produce an artifact, a clever prompt is not enough. It needs a bounded job. (<a href="https://doi.org/10.1145/3770761.3777281" target="_blank" rel="noopener">Joshi et al., 2026</a>)</p>
+      <p>My prompts now look more like compact design briefs: define the outcome, provide the relevant evidence, identify what may change, state what must remain untouched, define the checks, and tell the agent when to stop. That approach also matches current guidance to make constraints and completion criteria explicit. (<a href="https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6" target="_blank" rel="noopener">OpenAI, <em>Prompting guidance</em></a>)</p>
+      <h2>The TRACE framework I now use</h2>
+
+      <figure class="campaign-visual trace-infographic">
+        <button class="lightbox-trigger" type="button" data-lightbox data-fullsrc="../images/trace-infographic-v1.svg" data-caption="TRACE connects a bounded AI build job with the thinking that must remain with the learner." aria-label="Enlarge the TRACE framework infographic">
+          <img src="../images/trace-infographic-v1.svg" alt="Two-column TRACE framework connecting bounded AI job planning with student cognitive work">
+        </button>
+        <figcaption>TRACE connects a bounded AI job with the thinking that must remain with the learner. It is my working framework—not a validated intervention.</figcaption>
       </figure>
+      <p>I needed a way to connect how I build with AI to how I want students to learn with it. I am calling that working framework <strong>TRACE</strong>.</p>
+      <p>For an AI job, TRACE means:</p>
+      <ul><li><strong>Task:</strong> define the observable outcome.</li><li><strong>Relevant context:</strong> supply the sources, constraints, examples, and voice that actually matter.</li><li><strong>Actions and aids:</strong> specify the plan, tools, skills, files, and permitted changes.</li><li><strong>Checks:</strong> define the evidence, tests, rubric, or success criteria.</li><li><strong>Exit and escalation:</strong> say when the agent must stop and when a human decides.</li></ul>
+      <p>The build prompt I now trust looks more like this:</p>
+      <pre><code>Task: Add an evidence checklist to the practice tool.
 
-      <p>
-        The second tool — which I built after the first one and is considerably more complex — is the <strong>DigSoc Response Studio</strong>. This one walks students through a seven-step process: understand the question, think like a high-scoring student, brainstorm before writing, write the full response, annotate it with inline text highlights, self-assess against the rubric, and then generate a tailored AI feedback prompt they can paste into Claude or ChatGPT. It covers every question type across Paper 1 and Paper 2, with specific rubric logic, checklists, and exemplar guidance for each. It also has a demo mode that loads a full worked example — a real IB-style question on Instagram and social class — with a complete model response, annotations already placed, and a checklist that shows exactly why the response hits the top band.
-      </p>
+Relevant context: Use the existing response view, rubric language,
+and the approved student workflow.
 
-      <div class="app-preview">
-        <h4>DigSoc Response Studio — What It Does</h4>
-        <p>A guided 7-step simulator covering every Paper 1 and Paper 2 question type. Brainstorm scaffold, inline annotation, rubric self-assessment, score estimate with hard caps, and a copy-ready AI feedback prompt.</p>
-        <div class="feature-chips">
-          <span class="feature-chip">7-step guided workflow</span>
-          <span class="feature-chip">All 8 question types</span>
-          <span class="feature-chip">Inline text highlighting</span>
-          <span class="feature-chip">Hard cap scoring logic</span>
-          <span class="feature-chip">AI feedback prompt generator</span>
-          <span class="feature-chip">Worked example demo</span>
-          <span class="feature-chip">Local autosave</span>
-          <span class="feature-chip">JSON import/export</span>
-        </div>
-        <a href="https://macchady-spec.github.io/ib_paperPractice/ibdsdiag" target="_blank" rel="noopener" class="live-link">
-          ↗ Try it live
-        </a>
-      </div>
+Actions and aids: Preserve the student's text. Add a visible checklist
+that the student controls. Do not generate a mark or rewrite the answer.
 
-      <figure class="app-screenshot">
-        <img src="../images/scrennshotib2.png" alt="DigSoc Response Studio — 7-step guided workflow with inline annotation and rubric self-assessment" onerror="this.closest('figure').style.display='none'">
-        <figcaption>The Response Studio: a 7-step guided process from understanding the question to generating a personalised AI feedback prompt — covering every IB Digital Society question type.</figcaption>
+Checks: The student can compare the response with each criterion,
+save the check state, and reopen it without losing work.
+
+Exit: Stop after the feature and tests pass. Do not publish.</code></pre>
+      <p>That is not prompt theatre. It is instructional design written in a form an agent can follow.</p>
+      <h2>When a prompt becomes a skill</h2>
+      <p>If I keep reusing the same prompt—or correcting the same mistake—I should not rebuild the workflow from memory. I can preserve it as a readable <strong>skill</strong>: instructions, references, and checks that travel with the project. (<a href="https://developers.openai.com/codex/skills/" target="_blank" rel="noopener">OpenAI, <em>Build skills</em></a>)</p>
+      <p>I also used the open-source <code>skills</code> command to install Matt Pocock's engineering workflows:</p>
+      <pre><code>npx skills@latest add mattpocock/skills</code></pre>
+      <p>That community command comes from the <a href="https://github.com/mattpocock/skills" target="_blank" rel="noopener">Matt Pocock skills repository</a> and the open-source <a href="https://github.com/vercel-labs/skills" target="_blank" rel="noopener"><code>skills</code> CLI</a>. Inspect what a skill instructs the agent to do and install only workflows you trust.</p>
+      <p>There is still a safe place for everyone to land. A teacher can begin with plain language: the goal, context, output, and boundary. Coding knowledge gives me more ways to inspect the machinery; it is not the admission ticket for having a useful idea.</p>
+      <h2>The classroom problem I was trying to solve</h2>
+      <p>Exam practice can produce a lot of activity without making the important decisions visible.</p>
+      <p>A student writes a response. A teacher annotates it. Feedback arrives. Everyone moves on. Somewhere in that sequence, the student is supposed to work out what the response did well, what the criteria required, and what to change next time.</p>
+      <p>Those connections are not automatic.</p>
+      <p>For IB Digital Society teachers, the challenge is therefore larger than generating more practice questions. Students need a practical way to rehearse the whole response process without being encouraged to treat AI output as authoritative assessment.</p>
+      <p>My design question became:</p>
+      <blockquote><p>Can a browser-based practice tool keep the student’s retrieval, explanation, self-assessment, and revision decisions at the centre of exam practice?</p></blockquote>
+      <p>That question produced two related tools: the <strong>IB DigSoc Exam Practice Studio</strong> and the <strong>DigSoc Response Studio</strong>.</p>
+      <p>They approach the same problem from different directions.</p>
+      <h2>Tool one: IB DigSoc Exam Practice Studio</h2>
+      <p>The <a href="https://macchady-spec.github.io/ib_paperPractice/ibdsdiag.html" target="_blank" rel="noopener">IB DigSoc Exam Practice Studio</a> places an attempted response alongside visible rubric criteria and annotation.</p>
+      <p>That visible arrangement matters to the design. The student is not simply handed a verdict. The response, the criteria, and the annotations can be examined together.</p>
+      <p>The intended sequence is straightforward:</p>
+      <ol><li>Attempt the response.</li><li>Examine the criteria.</li><li>Look at how the response has been annotated.</li><li>Identify what appears to be present, missing, or unclear.</li><li>Decide what to revise.</li></ol>
+      <p>The tool supports comparison, but comparison is not the same as surrendering judgment. Students drag annotation stamps onto the response, then use the visible checklist to decide whether the evidence is actually there. The tool does not establish an official IB mark, replace subject expertise, or settle every reasonable interpretation of the criteria.</p>
+      <p>That is where the teacher remains essential.</p>
+      <p>A teacher can question an annotation, clarify the meaning of a criterion, notice disciplinary nuance, and help a student distinguish between adding more words and improving an explanation. The interface can make material easier to inspect. It cannot make those professional judgments disappear.</p>
+
+      <aside class="live-tool-card" aria-labelledby="live-tool-heading">
+        <h3 id="live-tool-heading">Try the live IB Exam Practice Studio</h3>
+        <p>Open the hosted application in a new tab. There is no account, installation, or code download required.</p>
+        <a href="https://macchady-spec.github.io/ib_paperPractice/ibdsdiag.html" target="_blank" rel="noopener" class="btn btn-teal">Try the Live Tool →</a>
+      </aside>
+
+      <figure class="campaign-visual application-demo" id="tool-demonstration">
+        <video controls playsinline preload="metadata" poster="../images/ib-exam-tools-demo-v3-poster.png">
+          <source src="../images/ib-exam-tools-demo-v3.webm" type="video/webm">
+          <source src="../images/ib-exam-tools-demo-v3.mp4" type="video/mp4">
+          Your browser does not support embedded video. <a href="../images/ib-exam-tools-demo-v3.mp4">Open the demonstration video</a>.
+        </video>
+        <figcaption>A real application demonstration using a visibly synthetic, handwritten-style practice essay. No student work or private data appears.</figcaption>
       </figure>
+      <h2>Tool two: DigSoc Response Studio</h2>
+      <p>The DigSoc Response Studio makes more of the practice sequence explicit.</p>
+      <p>It moves through:</p>
+      <ol><li>understanding;</li><li>brainstorming;</li><li>writing;</li><li>annotation;</li><li>self-assessment; and</li><li>a feedback prompt.</li></ol>
+      <p>Its distinct public URL has not yet been verified, so I am not linking to it here.</p>
+      <p>What I like about this sequence is that it does not begin with AI producing a finished response. It begins with the student working out what the task means and what they might say.</p>
+      <p>Writing still has to happen.</p>
+      <p>The later stages then create opportunities to inspect that writing. Annotation draws attention to features of the response. Self-assessment asks the student to compare. A structured feedback prompt supports the next decision.</p>
+      <p>Again, the intended endpoint is not “the computer has spoken.” It is a more useful question:</p>
+      <blockquote><p>What will I change, and why?</p></blockquote>
+      <p>That is a modest goal. It is also much closer to the work I want students doing.</p>
 
-      <p>
-        Both tools run entirely in the browser as single HTML files. No login, no server, no subscription, no data sent anywhere. A student can open one on a Chromebook in a school with no internet and it still works. That was non-negotiable for me.
-      </p>
-
-      <h2>How It Actually Gets Built: The Process</h2>
-
-      <p>
-        This is what most posts about "vibe coding" skip. They say "I just chatted with AI and it wrote the code!" as if the hard part is typing. The hard part is not typing. The hard part is knowing what to ask for and knowing when to push back.
-      </p>
-
-      <p>
-        Here's the actual process I used, which you could replicate for almost any kind of tool you want to build as an educator:
-      </p>
-
-      <h3>Start with the problem, not the feature list</h3>
-
-      <p>
-        My first prompt was not "build me an IB exam tool." My first prompt was something closer to: "My IB Digital Society students consistently get to an exam and don't know the difference between describing something and analysing it. They write, they self-assess that it's good, and they're wrong. What's the root problem here and what would a tool need to do to fix it?"
-      </p>
-
-      <p>
-        That conversation — not a coding session, just a thinking session — produced the architecture. The tool needed: step-based flow so students can't skip the thinking phase, specific rubric language from the actual markbands, a way to visually locate where in their writing the evidence actually is, and a score that feels real because it's driven by the rubric, not vibes. Everything after that was building toward those four things.
-      </p>
-
-      <h3>Build the content before you build the code</h3>
-
-      <p>
-        The rubric data — the official markband language for each of the eight question types, the non-negotiables, the examiner tips, the things weak students do versus what strong students do — I drafted all of that in a document first. I knew the subject. I could look at my IB resources and write those tables. Once that content existed, asking the AI to turn it into a working application was a much simpler conversation than asking it to invent both at once.
-      </p>
-
-      <p>
-        This is something I'd tell any teacher trying this: <strong>you have domain knowledge that the AI doesn't have.</strong> You know what your students get wrong. You know what the rubric is actually asking for. You know what a good response looks like versus a mediocre one. That expertise is the most valuable thing in the room. The AI is the implementation layer, not the expertise layer.
-      </p>
-
-      <h3>Describe behavior, not syntax</h3>
-
-      <p>
-        I cannot tell an AI to "add an event listener to the textarea that fires a debounced save to localStorage." I don't know those words. What I can say is: "When a student types in the brainstorm field, their work should save automatically — they should never lose their text if the tab closes." The AI translates that into code. My job is to describe the behavior with enough precision that the translation is accurate.
-      </p>
-
-      <blockquote>
-        <p>You don't need to know how to code. You need to know how to describe what you want with precision. Those are very different skills, and you probably already have the second one.</p>
-      </blockquote>
-
-      <p>
-        Precision matters a lot. "Make it look better" gets you nothing useful. "The score estimate should update immediately when a checkbox is ticked — not on page load, not on submit — instantly" gets you what you want.
-      </p>
-
-      <h2>8 Vibe Coding Tips That Actually Matter in June 2026</h2>
-
-      <p>
-        A lot of what's written about AI-assisted coding is either breathlessly optimistic or uselessly vague. Here's what I actually found useful across the process of building these two tools:
-      </p>
-
-      <div class="numbered-tip">
-        <div class="tip-num">1</div>
-        <div class="tip-content">
-          <h3>One file as long as possible</h3>
-          <p>Both tools are single HTML files. CSS, JavaScript, data — all inline. This is not best practice for production software. It is excellent practice for a teacher building tools for students. No build process, no dependencies, no "npm install", no deployment infrastructure. You open the file in a browser and it works. Keep it in one file for as long as you possibly can. The complexity cost of splitting files into modules is real, and you will pay it before you understand what you're managing.</p>
+      <section class="evidence-gallery" aria-labelledby="evidence-gallery-heading">
+        <p class="section-kicker">VISIBLE APPLICATION EVIDENCE</p>
+        <h2 id="evidence-gallery-heading">What the student actually sees</h2>
+        <p>These are real application states—not concept mockups. The tools keep the response, criteria, annotations, and next decision visible.</p>
+        <div class="evidence-grid">
+          <figure><button class="lightbox-trigger" type="button" data-lightbox data-fullsrc="../images/ib-tool-how-to.png" data-caption="The workflow begins with an attempted response and visible instructions." aria-label="Enlarge the application instructions screenshot"><img src="../images/ib-tool-how-to.png" alt="IB Exam Practice Studio instructions explaining the student workflow"></button><figcaption>The workflow begins with an attempted response and visible instructions.</figcaption></figure>
+          <figure><button class="lightbox-trigger" type="button" data-lightbox data-fullsrc="../images/ib-tool-rubric.png" data-caption="Rubric language stays visible while the learner inspects the response." aria-label="Enlarge the application rubric screenshot"><img src="../images/ib-tool-rubric.png" alt="IB Exam Practice Studio showing the assessment rubric beside a response"></button><figcaption>Rubric language stays visible while the learner inspects the response.</figcaption></figure>
+          <figure><button class="lightbox-trigger" type="button" data-lightbox data-fullsrc="../images/ib-tool-checklist.png" data-caption="The checklist supports comparison; it does not claim an official mark." aria-label="Enlarge the application checklist screenshot"><img src="../images/ib-tool-checklist.png" alt="IB Exam Practice Studio Paper 2 checklist for self-assessment"></button><figcaption>The checklist supports comparison; it does not claim an official mark.</figcaption></figure>
+          <figure><button class="lightbox-trigger" type="button" data-lightbox data-fullsrc="../images/ib-response-understand.png" data-caption="The Response Studio starts with understanding before it moves toward feedback." aria-label="Enlarge the Response Studio screenshot"><img src="../images/ib-response-understand.png" alt="DigSoc Response Studio understanding stage"></button><figcaption>The Response Studio starts with understanding before it moves toward feedback.</figcaption></figure>
         </div>
-      </div>
+      </section>
+      <h2>The two tools form one practice loop</h2>
+      <p>I do not see these as two unrelated web experiments.</p>
+      <p>Together, they form the student side of TRACE:</p>
+      <ul><li><strong>Try first:</strong> produce a response from memory and understanding.</li><li><strong>Reveal reasoning:</strong> make the thinking behind the response visible.</li><li><strong>Annotate:</strong> identify the argument, evidence, explanation, and gaps.</li><li><strong>Check:</strong> compare the visible response with the assessment criteria.</li><li><strong>Evolve:</strong> revise while the student retains authorship.</li></ul>
+      <p>Underneath the acronym, the learning loop remains straightforward: <strong>retrieve → explain → compare → decide → revise</strong>.</p>
+      <p>The Response Studio slows down the construction and review of a response. The Exam Practice Studio makes criteria and annotation visible around an attempted response. In both cases, the tool is there to support attention and decision-making.</p>
+      <p>My interpretation is this:</p>
+      <blockquote><p>These two IB tools are most useful when the interface makes the cognitive work—retrieving, explaining, comparing against criteria, and deciding what to revise—easier to see without replacing it.</p></blockquote>
+      <p>This is a design and classroom-use interpretation. It is not a measured claim that the tools improve learning outcomes, and it should not be read as one.</p>
+      <p>That limitation is important. I can explain what the tools make visible and what I designed them to encourage. I cannot turn those observations into proof of impact without appropriate evidence.</p>
+      <h2>Why I designed the practice loop this way</h2>
+      <p>The research below supports the design principles—not a claim that my tools have already improved IB results. I kept coming back to three ideas.</p>
+      <h3>1. Assisted performance is not the same as learning</h3>
+      <p>OECD guidance distinguishes completing a task with generative AI from learning to complete it independently. A 2025 field experiment with nearly 1,000 high-school mathematics students found the same tension in practice: unrestricted AI improved work during practice but reduced later performance when the AI was removed, while a more carefully safeguarded tutor reduced that harm. Different subject, different tools, but a useful warning: the interface must preserve cognitive effort. (<a href="https://www.oecd.org/en/publications/reimagining-teaching-in-an-accelerating-world_d0edfe8c-en/full-report/component-6.html" target="_blank" rel="noopener">OECD, 2026</a>; <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., 2025</a>)</p>
+      <h3>2. Retrieval should come before assistance</h3>
+      <p>Roediger and Karpicke found that prior testing supported better delayed retention than restudying, and a later review of 50 classroom experiments found substantial benefits in many settings—with important limits and variation. Neither study tested my applications. They support the narrower choice to ask students to attempt, retrieve, and commit before receiving help. (<a href="https://doi.org/10.1111/j.1467-9280.2006.01693.x" target="_blank" rel="noopener">Roediger &amp; Karpicke, 2006</a>; <a href="https://doi.org/10.1007/s10648-021-09595-9" target="_blank" rel="noopener">Agarwal, Nunes &amp; Blunt, 2021</a>)</p>
+      <h3>3. Feedback should support a decision</h3>
+      <p>Large reviews show that feedback is not one consistently effective treatment. Its value depends on the information it carries. Specific, task-focused feedback that helps explain what, how, or why is more useful than instant verdicts. That is why these interfaces put the response, annotation, checklist, and criteria together: the learner still has to decide what the evidence shows and what to revise. (<a href="https://doi.org/10.3389/fpsyg.2019.03087" target="_blank" rel="noopener">Wisniewski, Zierer &amp; Hattie, 2020</a>; <a href="https://doi.org/10.3102/0034654307313795" target="_blank" rel="noopener">Shute, 2008</a>)</p>
+      <details class="research-notes">
+        <summary>Research notes and additional sources</summary>
+        <p>These sources added useful nuance while I was designing and writing:</p>
+        <ul>
+          <li><a href="https://unesdoc.unesco.org/ark:/48223/pf0000386693" target="_blank" rel="noopener">UNESCO (2023)</a> cautions against uses that remove opportunities for independent reasoning and discussion.</li>
+          <li><a href="https://doi.org/10.1038/s41598-025-97652-6" target="_blank" rel="noopener">Kestin et al. (2025)</a> found positive immediate results from a carefully scaffolded, course-grounded AI tutor, while warning against broad transfer claims.</li>
+          <li><a href="https://doi.org/10.1007/s10648-026-10133-8" target="_blank" rel="noopener">Fütterer et al. (2026)</a> found that adding reflective prompts did not automatically produce robust gains in strategy use or domain knowledge.</li>
+          <li><a href="https://doi.org/10.1007/s10648-018-9434-x" target="_blank" rel="noopener">Bisra et al. (2018)</a> found an overall positive effect for prompted self-explanation, with meaningful variation across contexts.</li>
+          <li><a href="https://doi.org/10.1080/0969594X.2026.2681630" target="_blank" rel="noopener">Panadero et al. (2026)</a> found positive but varied effects from self- and peer-assessment. A checklist can structure reflection; it does not become an official IB mark.</li>
+        </ul>
+      </details>
+      <h2>What the finished tools actually do</h2>
+      <p>The deployed applications do not call an AI model. They do not upload a student response, generate a mark, or issue live AI feedback. AI helped me plan, code, debug, and improve them; the finished tools run as ordinary browser applications.</p>
+      <p>What they do is simpler and more deliberate: keep the task, attempted response, annotation stamps, rubric language, and checklist visible together. Students retrieve, explain, compare, question, and revise. The interface organizes the practice; it does not do the practice for them.</p>
+      <h2>How I would use them with students</h2>
+      <p>I would ask students to attempt the response first, drag the annotation stamps onto the phrases that show their thinking, and then use the checklist to decide whether the evidence is actually visible. A useful discussion can stay focused on three questions:</p>
+      <ol><li>What does the response actually say?</li><li>How does that compare with the visible criterion?</li><li>What revision would make the reasoning clearer?</li></ol>
+      <p>The tool holds the evidence in view. The student and teacher make the judgment.</p>
+      <h2>The honest limits</h2>
+      <p>I am not claiming measured learning gains. The research gives me reasons to design around retrieval, explanation, useful feedback, and self-assessment; proving that these particular applications improve learning would require direct evaluation with real students and suitable safeguards.</p>
+      <p>The DigSoc Response Studio also still needs a verified distinct public URL, so I am showing its interface here without offering a broken link. Both tools are practice aids, not official IB assessment systems.</p>
+      <h2>A tool should leave something for the learner to do</h2>
+      <p>That may be the simplest test I have found for educational technology: after the tool has helped, what meaningful work still belongs to the student?</p>
+      <p>The goal is not to prove that AI can produce an answer-shaped object with tremendous confidence. The goal is to use AI to help build better places for students to retrieve, explain, compare, question, and revise.</p>
+      <p>That is the point of TRACE. It is not a proven intervention, and the acronym has not secretly done the research. It is my practical reminder that the technology needs a bounded job and the learner needs meaningful work left to do.</p>
+      <p><a href="https://macchady-spec.github.io/ib_paperPractice/ibdsdiag.html" target="_blank" rel="noopener" class="btn btn-teal">Try the Live IB Tool →</a></p>
+      <p>If you try it, tell me where the workflow supports a genuine revision decision—and where it gets in the way.</p>
 
-      <div class="numbered-tip">
-        <div class="tip-num">2</div>
-        <div class="tip-content">
-          <h3>CSS variables are your design system</h3>
-          <p>Before you write a single UI element, define your colour palette and font stack as CSS custom properties at the top of your file. Something like <code>--navy: #0d1b2e; --teal: #0ea5a0; --gold: #E8B84B</code>. Then use those variable names everywhere instead of hex codes. When you ask the AI to "make the checklist items look checked when ticked," it can use your variable names and the output is instantly consistent. This saved me hours of "why does that green not match."</p>
+      <section class="article-newsletter-signup" id="newsletter-signup" aria-labelledby="newsletter-signup-heading">
+        <p class="section-kicker">THE TEACHER'S AI TOOLKIT</p>
+        <h2 id="newsletter-signup-heading">Keep the useful part coming</h2>
+        <p>Join me every two weeks for practical AI and digital learning tools, built and tested by a computer science, multimedia, and IB Digital Society teacher still in the classroom.</p>
+        <div class="kit-form-embed" aria-label="Teacher's AI Toolkit newsletter signup">
+          <script async data-uid="70f50cb4b3" src="https://chad-wadden.kit.com/70f50cb4b3/index.js"></script>
+          <noscript><a href="https://chad-wadden.kit.com/70f50cb4b3?utm_source=chadwadden.ca&amp;utm_medium=website&amp;utm_campaign=trace_ib_tools&amp;utm_content=article_signup" class="btn btn-teal">Join the newsletter →</a></noscript>
         </div>
-      </div>
-
-      <div class="numbered-tip">
-        <div class="tip-num">3</div>
-        <div class="tip-content">
-          <h3>Tell the AI what constraints matter to you</h3>
-          <p>Every time I started a new feature, I led with my non-negotiables: no external dependencies, works offline, no data sent to any server, functions on a Chromebook. The AI made different choices when it knew those constraints existed. Without them, it would sometimes suggest fetching data from an API, using a framework, or requiring an internet connection. Constraints are not limitations — they're a specification.</p>
-        </div>
-      </div>
-
-      <div class="numbered-tip">
-        <div class="tip-num">4</div>
-        <div class="tip-content">
-          <h3>Version as you go — even casually</h3>
-          <p>I am not a git user. But I learned very quickly to Save As "tool-v2.html", "tool-v3.html" before any significant change. Three times, a new feature broke something I didn't notice until ten minutes of new code later. Being able to open the previous version side-by-side and compare was the only way to recover cleanly. If you know git, use it. If you don't, just make numbered copies before big changes.</p>
-        </div>
-      </div>
-
-      <div class="numbered-tip">
-        <div class="tip-num">5</div>
-        <div class="tip-content">
-          <h3>Ask the AI to explain before it codes</h3>
-          <p>Before I asked for any non-trivial feature, I asked: "Before you write any code, explain in plain language how you would approach this." That explanation gave me two things: a chance to correct the approach before it was embedded in a hundred lines of code, and enough understanding of the plan to catch it when the implementation drifted from what I'd asked for. This one habit saved me more time than any other.</p>
-        </div>
-      </div>
-
-      <div class="numbered-tip">
-        <div class="tip-num">6</div>
-        <div class="tip-content">
-          <h3>The AI will write confident, working code for the wrong problem</h3>
-          <p>This is the most important failure mode to understand. The AI is very good at writing correct code. It is not always good at writing code for what you actually need. I asked for a "score estimator" and got one that worked perfectly — but it calculated the score on page load, not when checkboxes were ticked. Technically correct, practically useless. Read the output. Run it. Check whether it does what you meant, not just what you typed.</p>
-        </div>
-      </div>
-
-      <div class="numbered-tip">
-        <div class="tip-num">7</div>
-        <div class="tip-content">
-          <h3>Keep your data separate from your UI logic</h3>
-          <p>In both my tools, the rubric content — the band descriptors, the checklists, the examiner tips — lives in a JavaScript data object at the top of the file, completely separate from the rendering functions. This was the AI's suggestion, and it was the right one. When I needed to update a rubric item, I changed one line of data. When I needed to add a new question type, I added one object. The UI didn't need to change. Separating your content from your presentation is the most practical architectural decision you can make for a tool like this.</p>
-        </div>
-      </div>
-
-      <div class="numbered-tip">
-        <div class="tip-num">8</div>
-        <div class="tip-content">
-          <h3>Ship something small, then make it better</h3>
-          <p>The first version of the Practice Studio had three features: upload a file, place stamps, see the rubric. That was it. I used it with students for a week before adding the score tab. I used it for two more weeks before building the export. Each addition was informed by what students actually got confused about. If I had tried to build everything before anyone used it, I would have built a lot of wrong things very carefully. Start smaller than you think you need to.</p>
-        </div>
-      </div>
-
-      <h2>What Surprised Me About the Process</h2>
-
-      <p>
-        I expected the hardest part to be the code. It wasn't. The hardest part was writing the content — the rubric language, the examiner tips, the checklist items that are specific enough to be genuinely useful but general enough to apply to any question in the paper. That took domain knowledge, experience with where my students struggle, and careful thinking about what the IB is actually trying to assess at each mark level. The AI helped me refine the language, but the substance came from me.
-      </p>
-
-      <p>
-        The other thing that surprised me was how much I enjoyed the process of building. I've never thought of myself as someone who makes software. But there's something satisfying about describing a problem clearly and watching a working solution appear — especially when you can open it, hand it to a student the next morning, and see them actually use it.
-      </p>
-
-      <p>
-        The annotation feature in the Response Studio — where students highlight text in their own response and tag it with a stamp — took about twenty minutes of back-and-forth to get right. The export system that embeds everything into a self-contained HTML file took an afternoon. Neither of those things would have been possible for me without AI. Both of them are now genuinely useful in my classroom.
-      </p>
-
-      <h2>What It Means for Teachers</h2>
-
-      <p>
-        I want to be careful not to oversell this. These tools work for my students because I understand my students, my subject, and the exam they're preparing for. An AI could not have built them without me. But I also could not have built them without the AI.
-      </p>
-
-      <p>
-        What's changed is not that coding is easy now. What's changed is that the implementation gap — the distance between "I know what this tool should do" and "this tool exists" — has shrunk dramatically for people who have subject expertise but not technical expertise. That's most teachers. That's almost all of us.
-      </p>
-
-      <p>
-        The skills that matter now are: being able to describe what you want with precision, knowing your subject deeply enough to build something that's actually useful, and being willing to iterate — to use the tool with students, see where it fails, and make it better. Those are things teachers already know how to do. The AI handles the rest.
-      </p>
-
-      <p>
-        If you've been sitting on an idea for a tool, a resource, a practice simulator, a self-assessment rubric, or anything else that would help your students — now is actually the time to build it.
-      </p>
+      </section>
 
       <div class="post-divider"></div>
-
-      <div class="tip-box">
-        <h4>Want to try the tools?</h4>
-        <p>Both the IB DigSoc Exam Practice Studio and the DigSoc Response Studio are available as free downloads. They work offline as single HTML files — no login, no account, no data collection. Email me at <a href="mailto:chad.aigroove@gmail.com" style="color:var(--teal)">chad.aigroove@gmail.com</a> and I'll send them along. If you're an IB Digital Society teacher and want to adapt them for your context, I'm happy to talk through how.</p>
-      </div>
-
-      <div class="post-divider"></div>
-
-      <div class="post-tags">
-        <span class="post-tag-chip">AI in Education</span>
-        <span class="post-tag-chip">Vibe Coding</span>
-        <span class="post-tag-chip">IB Digital Society</span>
-        <span class="post-tag-chip">Teacher Tools</span>
-        <span class="post-tag-chip">Exam Prep</span>
-      </div>
-
-      <div class="author-box">
-        <div class="author-avatar">
-          <img src="../images/chad-wadden-bw.PNG" alt="Chad Wadden">
-        </div>
-        <div>
-          <h4>Chad Wadden</h4>
-          <p>Teacher, department head, and basketball coach in Halifax, NS. Writing about education, technology, and performance every two weeks.</p>
-        </div>
-      </div>
-
-      <div class="post-nav">
-        <a href="index.html">← All Writing</a>
-        <a href="ai-in-education-honest-take.html">Next: AI in Education →</a>
-      </div>
-
+      <div class="post-tags"><span class="post-tag-chip">AI in Education</span><span class="post-tag-chip">TRACE</span><span class="post-tag-chip">Prompt Engineering</span><span class="post-tag-chip">IB Digital Society</span><span class="post-tag-chip">Teacher Tools</span></div>
+      <div class="author-box"><div class="author-avatar"><img src="../images/chad-wadden-bw.PNG" alt="Chad Wadden"></div><div><h4>Chad Wadden</h4><p>Computer science, multimedia, and IB Digital Society teacher in Halifax, NS. Building practical AI and digital learning tools while still in the classroom.</p></div></div>
+      <div class="post-nav"><a href="index.html">← All Writing</a><a href="#newsletter-signup">Join the Teacher's AI Toolkit →</a></div>
     </article>
   </div>
 
-  <script src="../js/main.js"></script>
+  <script src="../js/main.js?v=20260811-2"></script>
 </body>
 </html>

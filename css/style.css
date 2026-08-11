@@ -925,6 +925,27 @@ section { padding: 80px 0; }
   padding: 36px 32px;
 }
 
+.kit-form-embed {
+  width: 100%;
+  min-height: 120px;
+}
+
+.article-newsletter-signup {
+  scroll-margin-top: 96px;
+  padding: 28px;
+  border: 1px solid rgba(14,165,160,0.2);
+  border-radius: 16px;
+  background: rgba(14,165,160,0.08);
+}
+
+.article-newsletter-signup h2 {
+  margin-top: 0;
+}
+
+.article-newsletter-signup > p {
+  margin-bottom: 18px;
+}
+
 .newsletter-form-wrap h3 {
   font-family: var(--font-body);
   font-size: 1.1rem;

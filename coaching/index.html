@@ -4,71 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coaching — Chad Wadden</title>
-  <meta name="description" content="Basketball coaching resources, practice plans, and performance leadership from Chad Wadden — coming soon.">
+  <meta name="description" content="Writing and practical lessons connecting basketball coaching, teaching, practice design, and performance leadership from Chad Wadden.">
     <link rel="canonical" href="https://chadwadden.ca/coaching/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Coaching — Chad Wadden">
-  <meta property="og:description" content="Basketball coaching resources, practice plans, and performance leadership from Chad Wadden — coming soon.">
+  <meta property="og:description" content="Practical lessons connecting basketball coaching, teaching, practice design, and performance leadership.">
   <meta property="og:url" content="https://chadwadden.ca/coaching/">
   <meta property="og:image" content="https://chadwadden.ca/images/chad-teachers.png">
   <meta property="og:site_name" content="Chad Wadden">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Coaching — Chad Wadden">
-  <meta name="twitter:description" content="Basketball coaching resources, practice plans, and performance leadership from Chad Wadden — coming soon.">
+  <meta name="twitter:description" content="Practical lessons connecting basketball coaching, teaching, practice design, and performance leadership.">
   <meta name="twitter:image" content="https://chadwadden.ca/images/chad-teachers.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    body { padding-top: 68px; background: #1a0a00; min-height: 100vh; display: flex; flex-direction: column; }
-
-    .coming-soon {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 24px;
-      text-align: center;
-    }
-
-    .coming-soon-inner { max-width: 520px; }
-
-    .coming-soon-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 18px;
-      background: rgba(224,123,57,0.12);
-      border: 1px solid rgba(224,123,57,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 28px;
-      font-size: 2rem;
-    }
-
-    .coming-soon h1 {
-      font-family: var(--font-head);
-      font-size: clamp(2rem, 5vw, 3rem);
-      color: var(--white);
-      margin-bottom: 16px;
-      line-height: 1.15;
-    }
-
-    .coming-soon p {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.75;
-      margin-bottom: 36px;
-    }
-
-    .coming-soon .btn-group {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    body { padding-top: 68px; background: var(--gray-50); }
+    .coaching-hero { background: linear-gradient(135deg,#1a0a00,#4d2109); padding: 88px 24px 76px; text-align: center; }
+    .coaching-hero h1 { color: var(--white); font-size: clamp(2.3rem, 6vw, 4rem); margin: 8px auto 18px; }
+    .coaching-hero p { color: rgba(255,255,255,0.7); line-height: 1.75; max-width: 700px; margin: 0 auto; }
+    .coaching-feature { padding: 72px 0 88px; }
+    .coaching-card { max-width: 920px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; background: var(--white); border: 1px solid var(--gray-100); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+    .coaching-card img { width: 100%; height: 100%; min-height: 390px; object-fit: cover; }
+    .coaching-card-copy { padding: 44px; display: flex; flex-direction: column; justify-content: center; }
+    .coaching-card-copy h2 { color: var(--navy); font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 8px 0 16px; }
+    .coaching-card-copy p { color: var(--gray-500); line-height: 1.75; margin-bottom: 24px; }
+    @media (max-width: 760px) { .coaching-card { grid-template-columns: 1fr; } .coaching-card img { min-height: 280px; } .coaching-card-copy { padding: 32px 26px; } }
   </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JR7LL2L3DE"></script>
@@ -87,7 +51,7 @@
         <div class="logo-mark">CW</div>
         <div class="logo-text">
           <span class="name">Chad Wadden</span>
-          <span class="tagline-sm">Educator · Coach · Writer</span>
+          <span class="tagline-sm">Teacher · Builder · Writer</span>
         </div>
       </a>
       <ul class="nav-links">
@@ -99,25 +63,34 @@
         <li><a href="/#about-strip">About</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="https://chad-wadden.kit.com/608f830f78" class="btn btn-primary">Get the Newsletter →</a>
+        <a href="/#newsletter" class="btn btn-primary">Join the AI Toolkit →</a>
       </div>
-      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <div class="coming-soon">
-    <div class="coming-soon-inner">
-      <div class="coming-soon-icon">🏀</div>
-      <p class="section-label" style="margin-bottom:12px;color:rgba(224,123,57,0.8)">Coaching</p>
-      <h1>Something Good<br>Is Coming</h1>
-      <p>I'm putting together coaching resources, practice frameworks, and performance tools built from real seasons. Check back soon — or get notified when it drops.</p>
-      <div class="btn-group">
-        <a href="https://chad-wadden.kit.com/608f830f78" class="btn btn-primary">Get notified when it's live →</a>
-        <a href="/blog/" class="btn btn-outline" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)">Read the blog</a>
-      </div>
-    </div>
-  </div>
+  <header class="coaching-hero">
+    <p class="section-label" style="color:rgba(224,123,57,0.9)">Coaching &amp; Performance</p>
+    <h1>The court and the classroom have more in common than people think.</h1>
+    <p>Practice design, feedback, film study, culture, and adjustment all shape how people learn. Coaching remains part of my work, even while practical AI and digital learning lead the conversation here.</p>
+  </header>
 
-  <script src="../js/main.js"></script>
+  <main class="coaching-feature">
+    <div class="container">
+      <article class="coaching-card">
+        <img src="../images/chad-basketball.JPG" alt="Chad Wadden with a basketball team">
+        <div class="coaching-card-copy">
+          <p class="section-label">Featured Essay</p>
+          <h2>What Coaching Taught Me About Teaching</h2>
+          <p>Film study, practice design, and halftime adjustments. The parallels between coaching and teaching run deeper than most people realize.</p>
+          <div>
+            <a href="/blog/what-coaching-taught-me-about-teaching.html" class="btn btn-primary">Read the Essay →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <script src="../js/main.js?v=20260811"></script>
 </body>
 </html>

@@ -17,7 +17,7 @@ Personal brand website for Chad Wadden — educator, coach, and writer.
 ## To Do
 
 - [ ] Add photo to about section (`images/chad-wadden.jpg`)
-- [ ] Connect Kit (ConvertKit) newsletter form
+- [x] Connect Kit newsletter form
 - [ ] Connect Gumroad links for paid resources
 - [ ] Set up custom domain (chadwadden.ca or .com)
 - [ ] Add Google Analytics or Plausible
