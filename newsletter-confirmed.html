@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Welcome to the Teacher's AI Toolkit — Chad Wadden</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JR7LL2L3DE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JR7LL2L3DE');
+    if (!sessionStorage.getItem('teacher_ai_toolkit_lead_recorded')) {
+      gtag('event', 'generate_lead', { campaign_name: 'trace_ib_tools', lead_source: 'kit_confirmed_subscription' });
+      sessionStorage.setItem('teacher_ai_toolkit_lead_recorded', 'true');
+    }
+  </script>
+  <style>
+    .confirmation-main { min-height: 100vh; display: grid; place-items: center; padding: 32px; background: var(--gray-50); }
+    .confirmation-card { width: min(720px, 100%); padding: 48px; border-radius: 20px; background: white; box-shadow: 0 24px 70px rgba(13,27,46,.12); text-align: center; }
+    .confirmation-card h1 { margin-bottom: 18px; color: var(--navy); }
+    .confirmation-card p { color: var(--gray-700); }
+    .confirmation-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  </style>
+</head>
+<body>
+  <main class="confirmation-main">
+    <section class="confirmation-card">
+      <p class="section-kicker">SUBSCRIPTION CONFIRMED</p>
+      <h1>Welcome to the Teacher's AI Toolkit.</h1>
+      <p>You are in. Every two weeks, I will send one practical idea, tool, or honest lesson from the intersection of education, AI, and learning.</p>
+      <div class="confirmation-actions">
+        <a class="btn btn-primary" href="/blog/how-i-built-two-ib-exam-tools-with-ai.html?utm_source=kit&amp;utm_medium=confirmation&amp;utm_campaign=trace_ib_tools&amp;utm_content=confirmed_return">Read the TRACE article →</a>
+        <a class="btn btn-outline" href="/blog/">Browse the writing</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

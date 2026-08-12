@@ -159,6 +159,86 @@ normalizeKitFormCopy();
 const kitFormObserver = new MutationObserver(normalizeKitFormCopy);
 kitFormObserver.observe(document.body, { childList: true, subtree: true });
 
+// --- Privacy-safe campaign and funnel analytics ---
+// GA4 receives interaction labels and campaign context only. Never send email
+// addresses, student work, form field values, or other personal information.
+const analyticsContext = {
+  campaign_name: document.body.dataset.campaign || 'site',
+  content_id: document.body.dataset.contentId || document.title,
+};
+
+const trackSiteEvent = (name, parameters = {}) => {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', name, { ...analyticsContext, ...parameters });
+};
+
+document.querySelectorAll('[data-track-action]').forEach(link => {
+  link.addEventListener('click', () => trackSiteEvent(link.dataset.trackAction, {
+    placement: link.dataset.trackPlacement || 'unknown',
+    destination_host: (() => { try { return new URL(link.href).hostname; } catch { return 'unknown'; } })(),
+  }));
+});
+
+if (document.body.dataset.campaign) {
+  const search = new URLSearchParams(window.location.search);
+  trackSiteEvent('campaign_landing_view', {
+    source: search.get('utm_source') || 'direct',
+    medium: search.get('utm_medium') || 'none',
+    creative: search.get('utm_content') || 'unspecified',
+  });
+
+  const reached = new Set();
+  const trackArticleDepth = () => {
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = height > 0 ? Math.round((window.scrollY / height) * 100) : 100;
+    [25, 50, 75, 90].forEach(milestone => {
+      if (percent >= milestone && !reached.has(milestone)) {
+        reached.add(milestone);
+        trackSiteEvent('article_progress', { percent: milestone });
+      }
+    });
+  };
+  window.addEventListener('scroll', trackArticleDepth, { passive: true });
+  window.setTimeout(() => trackSiteEvent('article_engaged_60s'), 60000);
+}
+
+document.querySelectorAll('video[data-demo-id]').forEach(video => {
+  const milestones = new Set();
+  const details = { demo_id: video.dataset.demoId, demo_title: video.dataset.demoTitle };
+  video.addEventListener('play', () => {
+    if (!milestones.has('start')) { milestones.add('start'); trackSiteEvent('demo_start', details); }
+  });
+  video.addEventListener('timeupdate', () => {
+    if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+    const percent = Math.floor((video.currentTime / video.duration) * 100);
+    [25, 50, 75].forEach(milestone => {
+      if (percent >= milestone && !milestones.has(milestone)) {
+        milestones.add(milestone);
+        trackSiteEvent('demo_progress', { ...details, percent: milestone });
+      }
+    });
+  });
+  video.addEventListener('ended', () => trackSiteEvent('demo_complete', { ...details, percent: 100 }));
+});
+
+const instrumentKitForm = form => {
+  if (form.dataset.analyticsReady === 'true') return;
+  form.dataset.analyticsReady = 'true';
+  let started = false;
+  form.addEventListener('focusin', () => {
+    if (!started) { started = true; trackSiteEvent('newsletter_form_start', { placement: 'article_signup' }); }
+  });
+  form.addEventListener('submit', () => trackSiteEvent('newsletter_form_submit', {
+    placement: 'article_signup',
+    note: 'intent_only_confirmed_lead_is_recorded_after_email_confirmation',
+  }));
+};
+
+const instrumentKitForms = () => document.querySelectorAll('form[data-uid="70f50cb4b3"]').forEach(instrumentKitForm);
+instrumentKitForms();
+const kitAnalyticsObserver = new MutationObserver(instrumentKitForms);
+kitAnalyticsObserver.observe(document.body, { childList: true, subtree: true });
+
 // Blog category filters are deliberately small and client-side: four real
 // articles do not need a heavier content system.
 const blogFilterButtons = document.querySelectorAll('[data-filter]');
@@ -219,6 +299,7 @@ if (lightboxTriggers.length) {
       lightbox.hidden = false;
       document.body.classList.add('lightbox-open');
       closeButton.focus();
+      trackSiteEvent('evidence_image_open', { image_name: (trigger.dataset.fullsrc || '').split('/').pop() || 'unknown' });
     });
   });
 
