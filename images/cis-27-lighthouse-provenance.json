@@ -1,0 +1,19 @@
+{
+  "assetId": "cis-27-lighthouse-hero",
+  "createdAt": "2026-08-13",
+  "classification": "AI-generated editorial scene",
+  "documentaryEvidence": false,
+  "generator": "OpenAI image generation",
+  "purpose": "Cinematic Maritime homepage background with a separate code-rendered lighthouse beam.",
+  "prompt": "Create a cinematic, photorealistic editorial hero image of a rugged Nova Scotia lighthouse on the Atlantic coast at blue hour, immediately after sunset. Position the lighthouse in the right third and preserve the left 45 percent as a calm, low-detail text-safe area. Use a premium, natural editorial-photography style with deep navy, slate blue, sea-glass teal, warm ivory, and restrained amber. Keep the beacon unobstructed and do not bake a sweeping beam into the raster because it will be animated separately. Preserve that composition, then add exactly one small, realistic Atlantic harbour seal resting naturally on a low foreground rock near the lower-right shoreline. The seal is a subtle easter egg, not a focal point. Exclude people, boats, other animals, logos, signage, typography, watermarks, lightning, fantasy architecture, and tourist-postcard styling.",
+  "publicAssets": [
+    "images/cis-27-lighthouse-hero-640.avif",
+    "images/cis-27-lighthouse-hero-640.webp",
+    "images/cis-27-lighthouse-hero-960.avif",
+    "images/cis-27-lighthouse-hero-960.webp",
+    "images/cis-27-lighthouse-hero-1600.avif",
+    "images/cis-27-lighthouse-hero-1600.webp",
+    "images/cis-27-lighthouse-hero.png"
+  ],
+  "disclosure": "This image is an AI-generated editorial metaphor, not documentary evidence of a real event or location."
+}
