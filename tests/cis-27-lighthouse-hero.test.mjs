@@ -24,11 +24,25 @@ test('hero preserves the approved copy, calls to action, and static no-JavaScrip
     /Practical AI and digital learning tools, built and tested in a real classroom/,
   );
   assert.match(html, /IB teacher \(Film, Psychology, Digital Society\)/);
+  assert.match(html, /Computer Science · Multimedia · IB Teacher/);
   assert.match(html, /href="blog\/how-i-built-two-ib-exam-tools-with-ai\.html"[^>]*>Read the TRACE Article →<\/a>/);
   assert.match(html, /href="#newsletter"[^>]*>Join the AI Toolkit<\/a>/);
 
   assert.match(css, /\.hero-scene\s*\{[^}]*inset:\s*0;/s);
+  assert.match(css, /#hero\s*>\s*\.container\s*\{[^}]*z-index:\s*4;/s);
+  assert.match(css, /\.hero-scene\s*\{[^}]*z-index:\s*0;/s);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*\.hero-beam[^}]*animation:\s*none/s);
+});
+
+test('hero invalidates cached presentation assets and defines desktop, tablet, and phone layouts', () => {
+  assert.match(html, /href="css\/style\.css\?v=20260813-2"/);
+  assert.match(html, /cis-27-lighthouse-hero-1600\.avif\?v=20260813-2/);
+  assert.match(html, /src="js\/main\.js\?v=20260813-2"/);
+
+  assert.match(css, /@media\s*\(max-width:\s*1024px\)[\s\S]*\.hero-scene--mobile\s*\{[^}]*display:\s*block;/s);
+  assert.match(css, /@media\s*\(max-width:\s*900px\)[\s\S]*\.nav-hamburger\s*\{[^}]*display:\s*flex;/s);
+  assert.match(css, /@media\s*\(max-width:\s*768px\)[\s\S]*\.hero-visual\s*\{[^}]*grid-template-columns:\s*1fr;/s);
+  assert.match(css, /@media\s*\(max-width:\s*480px\)[\s\S]*\.hero-actions\s*\{[^}]*flex-direction:\s*column;/s);
 });
 
 test('generated hero source has durable provenance without documentary ambiguity', async () => {
@@ -55,4 +69,7 @@ test('generated hero source has durable provenance without documentary ambiguity
     const assetStat = await stat(new URL(`../${asset}`, import.meta.url));
     assert.ok(assetStat.size > 0, `${asset} must be a non-empty public asset`);
   }
+
+  const desktopAvif = await stat(new URL('../images/cis-27-lighthouse-hero-1600.avif', import.meta.url));
+  assert.ok(desktopAvif.size >= 40_000, 'desktop AVIF must retain enough photographic detail for a full-screen hero');
 });
