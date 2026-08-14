@@ -978,6 +978,13 @@ section { padding: 80px 0; }
   margin-bottom: 22px;
 }
 
+.kit-form-shell {
+  min-height: 112px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.96);
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -1226,6 +1233,14 @@ footer {
 
 .footer-bottom a { color: rgba(255,255,255,0.5); }
 .footer-bottom a:hover { color: var(--white); }
+
+/* The surrounding page owns the TRACE promise; the embedded Kit form owns
+   only the email field and submit action. This prevents the older Kit form
+   heading from competing with the approved campaign language. */
+.kit-form-shell .formkit-header,
+.kit-form-shell .formkit-subheader {
+  display: none !important;
+}
 
 /* ============================================
    RESPONSIVE

@@ -131,6 +131,7 @@ kitFormObserver.observe(document.body, { childList: true, subtree: true });
 // --- Privacy-safe campaign and funnel analytics ---
 // GA4 receives interaction labels and campaign context only. Never send email
 // addresses, student work, form field values, or other personal information.
+// Form values and email addresses are never read by this site script.
 const analyticsContext = {
   campaign_name: document.body.dataset.campaign || 'site',
   content_id: document.body.dataset.contentId || document.title,
@@ -140,6 +141,21 @@ const trackSiteEvent = (name, parameters = {}) => {
   if (typeof window.gtag !== 'function') return;
   window.gtag('event', name, { ...analyticsContext, ...parameters });
 };
+
+document.querySelectorAll('[data-track-event]').forEach(element => {
+  const eventName = element.dataset.trackEvent;
+  const location = element.dataset.trackLocation || 'website';
+
+  if (eventName === 'newsletter_form_view') {
+    trackSiteEvent(eventName, { campaign_id: 'trace_teacher_pack', content_id: location });
+  }
+
+  element.addEventListener('click', () => {
+    if (eventName !== 'newsletter_form_view') {
+      trackSiteEvent(eventName, { campaign_id: 'trace_teacher_pack', content_id: location });
+    }
+  });
+});
 
 document.querySelectorAll('[data-track-action]').forEach(link => {
   link.addEventListener('click', () => trackSiteEvent(link.dataset.trackAction, {

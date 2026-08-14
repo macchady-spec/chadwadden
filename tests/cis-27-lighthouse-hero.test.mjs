@@ -26,7 +26,7 @@ test('hero preserves the approved copy, calls to action, and static no-JavaScrip
   assert.match(html, /IB teacher \(Film, Psychology, Digital Society\)/);
   assert.match(html, /Computer Science · Multimedia · IB Teacher/);
   assert.match(html, /href="blog\/how-i-built-two-ib-exam-tools-with-ai\.html"[^>]*>Read the TRACE Article →<\/a>/);
-  assert.match(html, /href="#newsletter"[^>]*>Join the AI Toolkit<\/a>/);
+  assert.match(html, /href="#newsletter"[^>]*>Free TRACE Pack →<\/a>/);
 
   assert.match(css, /\.hero-scene\s*\{[^}]*inset:\s*0;/s);
   assert.match(css, /#hero\s*>\s*\.container\s*\{[^}]*z-index:\s*4;/s);
