@@ -84,6 +84,7 @@
       display: flex;
       flex-direction: column;
     }
+    .post-card[hidden] { display: none; }
     .post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 
     .post-card-img {
@@ -144,7 +145,7 @@
         <div class="logo-mark">CW</div>
         <div class="logo-text">
           <span class="name">Chad Wadden</span>
-          <span class="tagline-sm">Educator · Coach · Writer</span>
+          <span class="tagline-sm">Teacher · Builder · Writer</span>
         </div>
       </a>
       <ul class="nav-links">
@@ -156,9 +157,9 @@
         <li><a href="/#about-strip">About</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="/resources/#get-pack" class="btn btn-primary">Get the Newsletter →</a>
+        <a href="/resources/#get-pack" class="btn btn-primary">Free TRACE Pack →</a>
       </div>
-      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
@@ -172,55 +173,32 @@
 
   <div class="container">
     <div class="blog-filters">
-      <button class="filter-btn active">All</button>
-      <button class="filter-btn">AI in Education</button>
-      <button class="filter-btn">Creative Technology</button>
-      <button class="filter-btn">Coaching &amp; Performance</button>
-      <button class="filter-btn">Leadership</button>
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="ai-in-education" aria-pressed="false">AI in Education</button>
+      <button class="filter-btn" data-filter="creative-technology" aria-pressed="false">Creative Technology</button>
+      <button class="filter-btn" data-filter="coaching-performance" aria-pressed="false">Coaching &amp; Performance</button>
     </div>
 
     <div class="blog-list">
 
-      <article class="post-card">
-        <a href="i-built-my-own-fitness-app.html" style="text-decoration:none;display:contents">
-        <div class="post-card-img" style="background:linear-gradient(135deg,#0d0d0d,#2d0000);position:relative;overflow:hidden;">
-          <img src="../images/My-Google-AI-Studio-App-06-09-2026_10_18_PM.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;" onerror="this.style.display='none'">
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-            <div style="width:56px;height:56px;background:#dc2626;border-radius:14px;display:flex;align-items:center;justify-content:center;">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            </div>
-          </div>
-        </div>
-        <div class="post-card-body">
-          <span class="blog-tag">AI in Education</span>
-          <h2>I Built My Own Fitness App and It Didn't Kill Me (Much)</h2>
-          <p>I'm not a developer. But I shipped a full fitness app — AI coaching, swim builder, exercise demos, Firebase sync — using nothing but vibe coding and stubbornness.</p>
-          <div class="blog-meta" style="margin-bottom:14px">
-            <span>June 9, 2026</span><span>·</span><span>9 min read</span>
-          </div>
-          <span class="read-link">Read Article →</span>
-        </div>
-        </a>
-      </article>
-
-      <article class="post-card">
+      <article class="post-card" data-category="ai-in-education">
         <a href="how-i-built-two-ib-exam-tools-with-ai.html" style="text-decoration:none;display:contents">
         <div class="post-card-img" style="background:linear-gradient(135deg,#0a1020,#1e4d8c);position:relative;overflow:hidden;">
-          <img src="../images/chad-teachers.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;">
+          <img src="../images/trace-instagram-cover-v2.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.72;object-position:center;">
         </div>
         <div class="post-card-body">
           <span class="blog-tag">AI in Education</span>
-          <h2>How I Built Two IB Exam Practice Tools Using AI</h2>
-          <p>I'm not a developer. But I shipped two working web apps for my IB Digital Society students using nothing but AI and precise prompting. Here's how.</p>
+          <h2>AI Should Help Students TRACE Their Thinking, Not Erase It</h2>
+          <p>A computer science teacher's research-backed approach to prompts, agents, reusable skills, and student reflection.</p>
           <div class="blog-meta" style="margin-bottom:14px">
-            <span>June 9, 2026</span><span>·</span><span>8 min read</span>
+            <span>August 11, 2026</span><span>·</span><span>12 min read</span>
           </div>
           <span class="read-link">Read Article →</span>
         </div>
         </a>
       </article>
 
-      <article class="post-card">
+      <article class="post-card" data-category="ai-in-education">
         <a href="ai-in-education-honest-take.html" style="text-decoration:none;display:contents">
         <div class="post-card-img" style="background:linear-gradient(135deg,#0d1b2e,#1e4d8c);position:relative;overflow:hidden;">
           <img src="../images/chad-wadden-speaking.PNG" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;">
@@ -237,7 +215,7 @@
         </a>
       </article>
 
-      <article class="post-card">
+      <article class="post-card" data-category="coaching-performance">
         <a href="what-coaching-taught-me-about-teaching.html" style="text-decoration:none;display:contents">
         <div class="post-card-img" style="background:linear-gradient(135deg,#1a1a3e,#e07b39);position:relative;overflow:hidden;">
           <img src="../images/chad-basketball.JPG" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;">
@@ -254,7 +232,7 @@
         </a>
       </article>
 
-      <article class="post-card">
+      <article class="post-card" data-category="creative-technology">
         <a href="why-i-still-teach-film.html" style="text-decoration:none;display:contents">
         <div class="post-card-img" style="background:linear-gradient(135deg,#1a2f4a,#0ea5a0);position:relative;overflow:hidden;">
           <img src="../images/chad-teachers.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;">
@@ -277,9 +255,9 @@
   <section id="newsletter" style="background:linear-gradient(135deg,var(--navy) 0%,#0f2a4a 100%);padding:60px 0">
     <div class="container" style="text-align:center;max-width:560px">
       <p class="section-label">Never Miss a Post</p>
-      <h2 style="color:var(--white);font-size:2rem;margin-bottom:12px">Get it in your inbox</h2>
-      <p style="color:rgba(255,255,255,0.6);margin-bottom:28px">Free, biweekly, unsubscribe any time.</p>
-      <a href="/resources/#get-pack" class="btn btn-teal">Subscribe →</a>
+      <h2 style="color:var(--white);font-size:2rem;margin-bottom:12px">Get the free TRACE Teacher Pack</h2>
+      <p style="color:rgba(255,255,255,0.6);margin-bottom:28px">One practical AI tool, prompt, or classroom-tested lesson every two weeks.</p>
+      <a href="/resources/#get-pack" class="btn btn-teal">Get the Pack →</a>
     </div>
   </section>
 
@@ -292,6 +270,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js"></script>
+  <script src="../js/main.js?v=20260811"></script>
 </body>
 </html>
