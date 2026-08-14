@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "campaignId": "campaign_paired_ib_tools",
+  "productId": "trace_teacher_pack_v1",
+  "label": "Teacher-built working framework; not a validated intervention",
+  "derivedOn": "2026-08-13",
+  "approvedSourceArtifact": {
+    "path": "outputs/teacher-pack/teacher-pack.md",
+    "sha256": "d9ec299d7af2d486fb27b2a87a26b1f3df47a65e7bb52af8006ab1e3b1b04969"
+  },
+  "approvedJobRecordSha256": "cda39c7f2d0b3179c90353e5e087e9d90e0a80550d7b80f934ba86c289b805a2",
+  "publicDerivatives": [
+    {
+      "path": "resources/trace-teacher-pack/index.html",
+      "sha256": "679395d900bb45f42290d4216a35b0336958662b7569a0a1b1c56c64be7c5aaf",
+      "purpose": "Interactive browser worksheet and source-backed resource"
+    },
+    {
+      "path": "resources/trace-teacher-pack/trace-teacher-pack.pdf",
+      "sha256": "b7a5cde36416806591a8000ab540bb5f8da7f92c13d8495d8718b26fb85713e6",
+      "purpose": "Four-page printable teacher and student pack"
+    }
+  ],
+  "privacy": {
+    "browserWorksheetPersistence": "none",
+    "subscriberIdentityStoredInWebsite": false
+  }
+}

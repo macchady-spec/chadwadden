@@ -127,16 +127,6 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
 
-// --- Newsletter form (placeholder — replace with Kit embed) ---
-document.getElementById('newsletter-form')?.addEventListener('submit', e => {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  btn.textContent = '✓ You\'re on the list!';
-  btn.style.background = 'var(--teal)';
-  btn.disabled = true;
-  // TODO: Replace with Kit (ConvertKit) form action URL
-});
-
 // --- Smooth scroll for anchor links ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
@@ -144,6 +134,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// --- Privacy-safe campaign interaction tracking ---
+// Only fixed event/location labels are sent. Form values and email addresses
+// are never read by this site script.
+document.querySelectorAll('[data-track-event]').forEach(element => {
+  const eventName = element.dataset.trackEvent;
+  const location = element.dataset.trackLocation || 'website';
+
+  if (eventName === 'newsletter_form_view' && typeof window.gtag === 'function') {
+    window.gtag('event', eventName, {
+      campaign_id: 'trace_teacher_pack',
+      content_id: location
+    });
+  }
+
+  element.addEventListener('click', () => {
+    if (eventName !== 'newsletter_form_view' && typeof window.gtag === 'function') {
+      window.gtag('event', eventName, {
+        campaign_id: 'trace_teacher_pack',
+        content_id: location
+      });
     }
   });
 });
